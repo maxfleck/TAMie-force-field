@@ -1,0 +1,9 @@
+*/.ipynb_checkpoints
+*back*
+*__pycache__*
+build
+dist
+*egg*
+*DARUS*
+inout_playmol/*
+diols/1.2-Ethanediol/*

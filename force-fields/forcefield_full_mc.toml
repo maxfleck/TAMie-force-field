@@ -1,0 +1,929 @@
+[atoms.CH3_alkane]
+name = "CH3_alkane"
+mass = 15.035
+epsilon = 136.318
+sigma = 3.6034
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH2_alkane]
+name = "CH2_alkane"
+mass = 14.027
+epsilon = 52.9133
+sigma = 4.04
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH3_ethane]
+name = "CH3_ethane"
+mass = 15.035
+epsilon = 130.78
+sigma = 3.6463
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH2_cyc5]
+name = "CH2_cyc5"
+mass = 14.027
+epsilon = 74.5982
+sigma = 3.8462
+m = 16.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH2_cyc6]
+name = "CH2_cyc6"
+mass = 14.027
+epsilon = 69.2408
+sigma = 3.9149
+m = 16.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH_olefin]
+name = "CH_olefin"
+mass = 13.019
+epsilon = 53.9515
+sigma = 3.8234
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH_oleTra]
+name = "CH_oleTra"
+mass = 13.019
+epsilon = 53.9515
+sigma = 3.8234
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH_oleCis]
+name = "CH_oleCis"
+mass = 13.019
+epsilon = 53.9515
+sigma = 3.8234
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH2_olefin]
+name = "CH2_olefin"
+mass = 14.027
+epsilon = 100.681
+sigma = 3.6005
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.CH2_ethylene]
+name = "CH2_ethylene"
+mass = 14.027
+epsilon = 104.0946
+sigma = 3.7122
+m = 16.0
+cut = 14.0
+charge = -0.82
+
+[atoms.CH_branch]
+name = "CH_branch"
+mass = 13.015
+epsilon = 40.0
+sigma = 4.5
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.C_2branch]
+name = "C_2branch"
+mass = 12.003
+epsilon = 20.0
+sigma = 2.5
+m = 14.0
+cut = 14.0
+charge = 0.0
+
+[atoms.O_ether]
+name = "O_ether"
+mass = 15.999
+epsilon = 86.7
+sigma = 2.84
+m = 12.0
+cut = 14.0
+charge = 0.15
+
+[atoms.O_dme]
+name = "O_dme"
+mass = 15.999
+epsilon = 54.36
+sigma = 3.213
+m = 12.0
+cut = 14.0
+charge = 0.175
+
+[atoms.O_acetone]
+name = "O_acetone"
+mass = 15.999
+epsilon = 69.184
+sigma = 3.112
+m = 12.0
+cut = 14.0
+charge = 0.0
+
+[atoms.C_acetone]
+name = "C_acetone"
+mass = 12.011
+epsilon = 34.592
+sigma = 3.942
+m = 12.0
+cut = 14.0
+charge = 0.0
+
+[atoms.O_ketone]
+name = "O_ketone"
+mass = 15.999
+epsilon = 65.55
+sigma = 3.093
+m = 12.0
+cut = 14.0
+charge = -0.49
+
+[atoms.C_ketone]
+name = "C_ketone"
+mass = 12.011
+epsilon = 32.775
+sigma = 3.919
+m = 12.0
+cut = 14.0
+charge = 0.49
+
+[atoms.CH_aldehyde]
+name = "CH_aldehyde"
+mass = 13.019
+epsilon = 68.934
+sigma = 3.4941
+m = 12.0
+cut = 14.0
+charge = -0.038
+
+[atoms.O_aldehyde]
+name = "O_aldehyde"
+mass = 15.999
+epsilon = 100.85
+sigma = 3.0276
+m = 12.0
+cut = 14.0
+charge = -0.422
+
+[atoms.N_forN2]
+name = "N_forN2"
+mass = 13.807
+epsilon = 35.913
+sigma = 3.3136
+m = 12.0
+cut = 14.0
+charge = 0.964
+
+[atoms.O_MeOH]
+name = "O_MeOH"
+mass = 17.007
+epsilon = 101.667
+sigma = 3.1
+m = 12.0
+cut = 14.0
+charge = -0.667
+
+[atoms.CH3_MeOH]
+name = "CH3_MeOH"
+mass = 15.035
+epsilon = 136.318
+sigma = 3.6034
+m = 14.0
+cut = 14.0
+charge = 0.252
+
+[atoms.OH_EOH]
+name = "OH_EOH"
+mass = 17.007
+epsilon = 77.06
+sigma = 3.08
+m = 12.0
+cut = 14.0
+charge = -0.664
+
+[atoms.CH2_EOH]
+name = "CH2_EOH"
+mass = 14.027
+epsilon = 77.06
+sigma = 3.899
+m = 14.0
+cut = 14.0
+charge = 0.251
+
+[atoms.OH_alcohol]
+name = "OH_alcohol"
+mass = 17.007
+epsilon = 84.23
+sigma = 3.035
+m = 12.0
+cut = 14.0
+charge = -0.65
+
+[atoms.CH2_alcohol]
+name = "CH2_alcohol"
+mass = 14.027
+epsilon = 84.23
+sigma = 3.842
+m = 14.0
+cut = 14.0
+charge = 0.246
+
+[atoms.cH_MeOH]
+name = "H"
+mass = 1.0
+epsilon = 0.0
+sigma = 1.0
+m = 12.0
+cut = 0.0
+charge = 0.415
+
+[atoms.cH_EOH]
+name = "H"
+mass = 1.0
+epsilon = 0.0
+sigma = 1.0
+m = 12.0
+cut = 0.0
+charge = 0.413
+
+[atoms.cH_alcohol]
+name = "H"
+mass = 1.0
+epsilon = 0.0
+sigma = 1.0
+m = 12.0
+cut = 0.0
+charge = 0.404
+
+[bonds."[CH2_alkane][CH3_alkane]"]
+list = [ "CH3_alkane", "CH2_alkane",]
+type = 1
+p = [ 1.74, 0.0,]
+
+[bonds."[CH2_alkane][CH2_alkane]"]
+list = [ "CH2_alkane", "CH2_alkane",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH2_cyc6][CH2_cyc6]"]
+list = [ "CH2_cyc6", "CH2_cyc6",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH2_cyc5][CH2_cyc5]"]
+list = [ "CH2_cyc5", "CH2_cyc5",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH2_olefin][CH_olefin]"]
+list = [ "CH2_olefin", "CH_olefin",]
+type = 1
+p = [ 1.33, 0.0,]
+
+[bonds."[CH_olefin][CH_olefin]"]
+list = [ "CH_olefin", "CH_olefin",]
+type = 1
+p = [ 1.33, 0.0,]
+
+[bonds."[CH2_alkane][CH_olefin]"]
+list = [ "CH_olefin", "CH2_alkane",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH3_alkane][CH_olefin]"]
+list = [ "CH_olefin", "CH3_alkane",]
+type = 1
+p = [ 1.74, 0.0,]
+
+[bonds."[CH_oleCis][CH_oleCis]"]
+list = [ "CH_oleCis", "CH_oleCis",]
+type = 1
+p = [ 1.33, 0.0,]
+
+[bonds."[CH2_alkane][CH_oleCis]"]
+list = [ "CH_oleCis", "CH2_alkane",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH3_alkane][CH_oleCis]"]
+list = [ "CH_oleCis", "CH3_alkane",]
+type = 1
+p = [ 1.74, 0.0,]
+
+[bonds."[CH_oleTra][CH_oleTra]"]
+list = [ "CH_oleTra", "CH_oleTra",]
+type = 1
+p = [ 1.33, 0.0,]
+
+[bonds."[CH2_alkane][CH_oleTra]"]
+list = [ "CH_oleTra", "CH2_alkane",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH3_alkane][CH_oleTra]"]
+list = [ "CH_oleTra", "CH3_alkane",]
+type = 1
+p = [ 1.74, 0.0,]
+
+[bonds."[CH3_alkane][O_dme]"]
+list = [ "CH3_alkane", "O_dme",]
+type = 1
+p = [ 1.61, 0.0,]
+
+[bonds."[CH2_alkane][O_ether]"]
+list = [ "CH2_alkane", "O_ether",]
+type = 1
+p = [ 1.41, 0.0,]
+
+[bonds."[CH3_alkane][O_ether]"]
+list = [ "CH3_alkane", "O_ether",]
+type = 1
+p = [ 1.61, 0.0,]
+
+[bonds."[CH3_ethane][CH3_ethane]"]
+list = [ "CH3_ethane", "CH3_ethane",]
+type = 1
+p = [ 1.94, 0.0,]
+
+[bonds."[CH2_alkane][CH_branch]"]
+list = [ "CH2_alkane", "CH_branch",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH3_alkane][CH_branch]"]
+list = [ "CH3_alkane", "CH_branch",]
+type = 1
+p = [ 1.74, 0.0,]
+
+[bonds."[CH2_alkane][C_2branch]"]
+list = [ "CH2_alkane", "C_2branch",]
+type = 1
+p = [ 1.54, 0.0,]
+
+[bonds."[CH3_alkane][C_2branch]"]
+list = [ "CH3_alkane", "C_2branch",]
+type = 1
+p = [ 1.74, 0.0,]
+
+[bonds."[CH3_alkyne][C_alkyne]"]
+list = [ "CH3_alkyne", "C_alkyne",]
+type = 1
+p = [ 1.47, 0.0,]
+
+[bonds."[C_alkyne][C_alkyne]"]
+list = [ "C_alkyne", "C_alkyne",]
+type = 1
+p = [ 1.2, 0.0,]
+
+[bonds."[CH3_alkane][C_ketone]"]
+list = [ "CH3_alkane", "C_ketone",]
+type = 1
+p = [ 1.72, 0.0,]
+
+[bonds."[CH2_alkane][C_ketone]"]
+list = [ "CH2_alkane", "C_ketone",]
+type = 1
+p = [ 1.52, 0.0,]
+
+[bonds."[C_ketone][O_ketone]"]
+list = [ "C_ketone", "O_ketone",]
+type = 1
+p = [ 1.229, 0.0,]
+
+[bonds."[CH3_alkane][C_acetone]"]
+list = [ "CH3_alkane", "C_acetone",]
+type = 1
+p = [ 1.72, 0.0,]
+
+[bonds."[CH2_alkane][C_acetone]"]
+list = [ "CH2_alkane", "C_acetone",]
+type = 1
+p = [ 1.52, 0.0,]
+
+[bonds."[C_acetone][O_acetone]"]
+list = [ "C_acetone", "O_acetone",]
+type = 1
+p = [ 1.229, 0.0,]
+
+[bonds."[CH2_alkane][CH_aldehyde]"]
+list = [ "CH2_alkane", "CH_aldehyde",]
+type = 1
+p = [ 1.52, 0.0,]
+
+[bonds."[CH3_alkane][CH_aldehyde]"]
+list = [ "CH3_alkane", "CH_aldehyde",]
+type = 1
+p = [ 1.72, 0.0,]
+
+[bonds."[CH_aldehyde][O_aldehyde]"]
+list = [ "CH_aldehyde", "O_aldehyde",]
+type = 1
+p = [ 1.217, 0.0,]
+
+[bonds."[N_forN2][N_forN2]"]
+list = [ "N_forN2", "N_forN2",]
+type = 1
+p = [ 1.098, 0.0,]
+
+[bonds."[N_forN2][c_Z_N2]"]
+list = [ "N_forN2", "c_Z_N2",]
+type = 1
+p = [ 0.549, 0.0,]
+
+[bonds."[N_N2_q0][N_N2_q0]"]
+list = [ "N_N2_q0", "N_N2_q0",]
+type = 1
+p = [ 1.098, 0.0,]
+
+[bonds."[CH2_ethylene][CH2_ethylene]"]
+list = [ "CH2_ethylene", "CH2_ethylene",]
+type = 1
+p = [ 1.33, 0.0,]
+
+[bonds."[CH2_ethylene][c_Z_ethylene]"]
+list = [ "CH2_ethylene", "c_Z_ethylene",]
+type = 1
+p = [ 0.665, 0.0,]
+
+[bonds."[CH3_alkane][O_formate]"]
+list = [ "CH3_alkane", "O_formate",]
+type = 1
+p = [ 1.61, 0.0,]
+
+[bonds."[CH2_alkane][O_formate]"]
+list = [ "CH2_alkane", "O_formate",]
+type = 1
+p = [ 1.41, 0.0,]
+
+[bonds."[CH_formate][O_formate]"]
+list = [ "O_formate", "CH_formate",]
+type = 1
+p = [ 1.344, 0.0,]
+
+[bonds."[CH_formate][O=formate]"]
+list = [ "CH_formate", "O=formate",]
+type = 1
+p = [ 1.2, 0.0,]
+
+[bonds."[CH3_alkane][O_ester]"]
+list = [ "CH3_alkane", "O_ester",]
+type = 1
+p = [ 1.61, 0.0,]
+
+[bonds."[CH2_alkane][O_ester]"]
+list = [ "CH2_alkane", "O_ester",]
+type = 1
+p = [ 1.41, 0.0,]
+
+[bonds."[C_ester][O_ester]"]
+list = [ "O_ester", "C_ester",]
+type = 1
+p = [ 1.344, 0.0,]
+
+[bonds."[C_ester][O=ester]"]
+list = [ "C_ester", "O=ester",]
+type = 1
+p = [ 1.2, 0.0,]
+
+[bonds."[CH2_alkane][C_ester]"]
+list = [ "C_ester", "CH2_alkane",]
+type = 1
+p = [ 1.52, 0.0,]
+
+[bonds."[CH3_alkane][C_ester]"]
+list = [ "C_ester", "CH3_alkane",]
+type = 1
+p = [ 1.72, 0.0,]
+
+[bonds."[O_MeOH][cH_MeOH]"]
+list = [ "O_MeOH", "cH_MeOH",]
+type = 1
+p = [ 0.97, 0.0,]
+
+[bonds."[CH3_MeOH][O_MeOH]"]
+list = [ "CH3_MeOH", "O_MeOH",]
+type = 1
+p = [ 1.62, 0.0,]
+
+[bonds."[OH_EOH][cH_EOH]"]
+list = [ "OH_EOH", "cH_EOH",]
+type = 1
+p = [ 0.97, 0.0,]
+
+[bonds."[CH2_EOH][OH_EOH]"]
+list = [ "CH2_EOH", "OH_EOH",]
+type = 1
+p = [ 1.42, 0.0,]
+
+[bonds."[CH2_EOH][CH3_alkane]"]
+list = [ "CH3_alkane", "CH2_EOH",]
+type = 1
+p = [ 1.714, 0.0,]
+
+[bonds."[OH_alcohol][cH_alcohol]"]
+list = [ "OH_alcohol", "cH_alcohol",]
+type = 1
+p = [ 0.97, 0.0,]
+
+[bonds."[CH2_alcohol][OH_alcohol]"]
+list = [ "CH2_alcohol", "OH_alcohol",]
+type = 1
+p = [ 1.42, 0.0,]
+
+[bonds."[CH2_alcohol][CH2_alkane]"]
+list = [ "CH2_alkane", "CH2_alcohol",]
+type = 1
+p = [ 1.514, 0.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CHxx_alkane",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CHxx_alkane][CH_branch][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH_branch", "CHxx_alkane",]
+type = 2
+p = [ 112.0, 62500.0,]
+
+[angles."[CH_branch][CH2_alkane][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH_branch",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CHxx_alkane][C_2branch][CHxx_alkane]"]
+list = [ "CHxx_alkane", "C_2branch", "CHxx_alkane",]
+type = 2
+p = [ 109.47, 62500.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][C_2branch]"]
+list = [ "CHxx_alkane", "CH2_alkane", "C_2branch",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CH2_cyc6][CH2_cyc6][CH2_cyc6]"]
+list = [ "CH2_cyc6", "CH2_cyc6", "CH2_cyc6",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CH2_cyc5][CH2_cyc5][CH2_cyc5]"]
+list = [ "CH2_cyc5", "CH2_cyc5", "CH2_cyc5",]
+type = 2
+p = [ 105.5, 62500.0,]
+
+[angles."[CH2_olefin][CH_olefin][CHxx_alkane]"]
+list = [ "CH2_olefin", "CH_olefin", "CHxx_alkane",]
+type = 2
+p = [ 119.7, 70420.0,]
+
+[angles."[CH_olefin][CH_olefin][CHxx_alkane]"]
+list = [ "CH_olefin", "CH_olefin", "CHxx_alkane",]
+type = 2
+p = [ 119.7, 70420.0,]
+
+[angles."[CH_oleCis][CH_oleCis][CHxx_alkane]"]
+list = [ "CH_oleCis", "CH_oleCis", "CHxx_alkane",]
+type = 2
+p = [ 119.7, 70420.0,]
+
+[angles."[CH_oleTra][CH_oleTra][CHxx_alkane]"]
+list = [ "CH_oleTra", "CH_oleTra", "CHxx_alkane",]
+type = 2
+p = [ 119.7, 70420.0,]
+
+[angles."[CH_olefin][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_olefin", "CH2_alkane", "CHxx_alkane",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CH_oleCis][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_oleCis", "CH2_alkane", "CHxx_alkane",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CH_oleTra][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_oleTra", "CH2_alkane", "CHxx_alkane",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CHxx_alkane][O_dme][CHxx_alkane]"]
+list = [ "CHxx_alkane", "O_dme", "CHxx_alkane",]
+type = 2
+p = [ 112.0, 60400.0,]
+
+[angles."[CHxx_alkane][O_ether][CHxx_alkane]"]
+list = [ "CHxx_alkane", "O_ether", "CHxx_alkane",]
+type = 2
+p = [ 112.0, 60400.0,]
+
+[angles."[CH3_alksht][O_ether][CH3_alksht]"]
+list = [ "CH3_alksht", "O_ether", "CH3_alksht",]
+type = 2
+p = [ 112.0, 60400.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][O_ether]"]
+list = [ "CHxx_alkane", "CH2_alkane", "O_ether",]
+type = 2
+p = [ 112.0, 50300.0,]
+
+[angles."[CH3_alkyne][C_alkyne][C_alkyne]"]
+list = [ "CH3_alkyne", "C_alkyne", "C_alkyne",]
+type = 2
+p = [ 180.0, 19121.0,]
+
+[angles."[CHxx_alkane][C_ketone][CHxx_alkane]"]
+list = [ "CHxx_alkane", "C_ketone", "CHxx_alkane",]
+type = 2
+p = [ 117.2, 62500.0,]
+
+[angles."[CHxx_alkane][C_ketone][O_ketone]"]
+list = [ "CHxx_alkane", "C_ketone", "O_ketone",]
+type = 2
+p = [ 121.4, 62500.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][C_ketone]"]
+list = [ "C_ketone", "CH2_alkane", "CHxx_alkane",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CHxx_alkane][C_acetone][CHxx_alkane]"]
+list = [ "CHxx_alkane", "C_acetone", "CHxx_alkane",]
+type = 2
+p = [ 117.2, 62500.0,]
+
+[angles."[CHxx_alkane][C_acetone][O_acetone]"]
+list = [ "CHxx_alkane", "C_acetone", "O_acetone",]
+type = 2
+p = [ 121.4, 62500.0,]
+
+[angles."[CH_aldehyde][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_aldehyde", "CH2_alkane", "CHxx_alkane",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CHxx_alkane][CH_aldehyde][O_aldehyde]"]
+list = [ "O_aldehyde", "CH_aldehyde", "CHxx_alkane",]
+type = 2
+p = [ 121.4, 62500.0,]
+
+[angles."[N_forN2][N_forN2][c_Z_N2]"]
+list = [ "N_forN2", "N_forN2", "c_Z_N2",]
+type = 1
+p = [ 0.0, 0.0,]
+
+[angles."[CH2_ethylene][CH2_ethylene][c_Z_ethylene]"]
+list = [ "CH2_ethylene", "CH2_ethylene", "c_Z_ethylene",]
+type = 1
+p = [ 0.0, 0.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][O_formate]"]
+list = [ "CHxx_alkane", "CH2_alkane", "O_formate",]
+type = 2
+p = [ 108.8, 88418.0,]
+
+[angles."[CH_formate][O_formate][CHxx_alkane]"]
+list = [ "CHxx_alkane", "O_formate", "CH_formate",]
+type = 2
+p = [ 116.4, 72570.0,]
+
+[angles."[O=formate][CH_formate][O_formate]"]
+list = [ "O_formate", "CH_formate", "O=formate",]
+type = 2
+p = [ 126.6, 136890.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][O_ester]"]
+list = [ "CHxx_alkane", "CH2_alkane", "O_ester",]
+type = 2
+p = [ 108.8, 88418.0,]
+
+[angles."[CHxx_alkane][O_ester][C_ester]"]
+list = [ "CHxx_alkane", "O_ester", "C_ester",]
+type = 2
+p = [ 115.0, 62500.0,]
+
+[angles."[O=ester][C_ester][O_ester]"]
+list = [ "O_ester", "C_ester", "O=ester",]
+type = 2
+p = [ 125.0, 62500.0,]
+
+[angles."[CHxx_alkane][C_ester][O_ester]"]
+list = [ "O_ester", "C_ester", "CHxx_alkane",]
+type = 2
+p = [ 110.0, 70600.0,]
+
+[angles."[CHxx_alkane][C_ester][O=ester]"]
+list = [ "O=ester", "C_ester", "CHxx_alkane",]
+type = 2
+p = [ 125.0, 62500.0,]
+
+[angles."[CHxx_alkane][CH2_alkane][C_ester]"]
+list = [ "CHxx_alkane", "CH2_alkane", "C_ester",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[angles."[CH3_MeOH][O_MeOH][cH_MeOH]"]
+list = [ "CH3_MeOH", "O_MeOH", "cH_MeOH",]
+type = 2
+p = [ 107.4, 45960.0,]
+
+[angles."[CH2_EOH][OH_EOH][cH_EOH]"]
+list = [ "CH2_EOH", "OH_EOH", "cH_EOH",]
+type = 2
+p = [ 107.4, 45960.0,]
+
+[angles."[CH3_alkane][CH2_EOH][OH_EOH]"]
+list = [ "CH3_alkane", "CH2_EOH", "OH_EOH",]
+type = 2
+p = [ 113.5, 62250.0,]
+
+[angles."[CH2_alcohol][OH_alcohol][cH_alcohol]"]
+list = [ "CH2_alcohol", "OH_alcohol", "cH_alcohol",]
+type = 2
+p = [ 107.4, 45960.0,]
+
+[angles."[CH2_alkane][CH2_alcohol][OH_alcohol]"]
+list = [ "CH2_alkane", "CH2_alcohol", "OH_alcohol",]
+type = 2
+p = [ 113.5, 62250.0,]
+
+[angles."[CH2_alcohol][CH2_alkane][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alcohol",]
+type = 2
+p = [ 114.0, 62500.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH2_alkane][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 0.0, 355.03, -68.19, 791.32, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH_branch][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH_branch", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ -251.06, 428.73, -111.85, 441.27, 0.0,]
+
+[torsions."[CHxx_alkane][CH_branch][CH_branch][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH_branch", "CH_branch", "CHxx_alkane",]
+type = 1
+p = [ -251.06, 428.73, -111.85, 441.27, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][C_2branch][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "C_2branch", "CHxx_alkane",]
+type = 1
+p = [ 0.0, 0.0, 0.0, 461.29, 0.0,]
+
+[torsions."[CH_branch][CH2_alkane][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_branch", "CH2_alkane", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 0.0, 355.03, -68.19, 791.32, 0.0,]
+
+[torsions."[CH_olefin][CH2_alkane][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_olefin", "CH2_alkane", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 0.0, 355.03, -68.19, 791.32, 0.0,]
+
+[torsions."[CH2_olefin][CH_olefin][CH2_alkane][CHxx_alkane]"]
+list = [ "CH2_olefin", "CH_olefin", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 688.5, 86.36, -109.77, -282.24, 0.0,]
+
+[torsions."[CH_olefin][CH_olefin][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_olefin", "CH_olefin", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 688.5, 86.36, -109.77, -282.24, 0.0,]
+
+[torsions."[CH_oleCis][CH_oleCis][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_oleCis", "CH_oleCis", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 688.5, 86.36, -109.77, -282.24, 0.0,]
+
+[torsions."[CH_oleTra][CH_oleTra][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_oleTra", "CH_oleTra", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 688.5, 86.36, -109.77, -282.24, 0.0,]
+
+[torsions."[CHxx_alkane][CH_oleCis][CH_oleCis][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH_oleCis", "CH_oleCis", "CHxx_alkane",]
+type = 5
+p = [ 12400.0, 3.141592654, 0.0,]
+
+[torsions."[CHxx_alkane][CH_oleTra][CH_oleTra][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH_oleTra", "CH_oleTra", "CHxx_alkane",]
+type = 5
+p = [ 13400.0, 0.0, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][C_ketone][O_ketone]"]
+list = [ "O_ketone", "C_ketone", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 2035.58, -736.9, 57.84, -293.23, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][C_ketone][CHxx_alkane]"]
+list = [ "CHxx_alkane", "C_ketone", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ -17.26, 752.6, 14.89, 282.1, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH2_alkane][C_ketone]"]
+list = [ "C_ketone", "CH2_alkane", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 0.0, 355.03, -68.19, 791.32, 0.0,]
+
+[torsions."[CH_aldehyde][CH2_alkane][CH2_alkane][CHxx_alkane]"]
+list = [ "CH_aldehyde", "CH2_alkane", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 11.81, 467.8, -274.1, 846.8, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH_aldehyde][O_aldehyde]"]
+list = [ "O_aldehyde", "CH_aldehyde", "CH2_alkane", "CHxx_alkane",]
+type = 1
+p = [ 1182.0, -225.6, 302.8, -339.3, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][O_ether][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "O_ether", "CHxx_alkane",]
+type = 1
+p = [ 0.0, 725.35, -163.75, 558.2, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH2_alkane][O_ether]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alkane", "O_ether",]
+type = 1
+p = [ 0.0, 176.62, -53.34, 769.93, 0.0,]
+
+[torsions."[CH2_cyc6][CH2_cyc6][CH2_cyc6][CH2_cyc6]"]
+list = [ "CH2_cyc6", "CH2_cyc6", "CH2_cyc6", "CH2_cyc6",]
+type = 4
+p = [ 5073.0, 6840.0, 3509.0, 63.0, 0.0, 0.0, 0.0,]
+
+[torsions."[CH2_cyc5][CH2_cyc5][CH2_cyc5][CH2_cyc5]"]
+list = [ "CH2_cyc5", "CH2_cyc5", "CH2_cyc5", "CH2_cyc5",]
+type = 4
+p = [ 31394.0, 45914.0, 16518.0, 1496.0, 0.0, 0.0, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH2_alkane][O_formate]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alkane", "O_formate",]
+type = 1
+p = [ 0.0, 176.62, -53.34, 769.93, 0.0,]
+
+[torsions."[CH_formate][O_formate][CH2_alkane][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "O_formate", "CH_formate",]
+type = 1
+p = [ 0.0, 1293.83, -899.46, 583.8, 0.0,]
+
+[torsions."[CHxx_alkane][O_formate][CH_formate][O=formate]"]
+list = [ "CHxx_alkane", "O_formate", "CH_formate", "O=formate",]
+type = 1
+p = [ 2136.26, -883.87, 2781.14, -184.26, 0.0,]
+
+[torsions."[-CHxx][-O_ester][-CH_ester][=O_ester]"]
+list = [ "-CHxx", "-O_ester", "-CH_ester", "=O_ester",]
+type = 1
+p = [ 2205.23, -907.66, 2758.96, -212.79, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH2_alkane][O_ester]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alkane", "O_ester",]
+type = 1
+p = [ 0.0, 176.62, -53.34, 769.93, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][O_ester][C_ester]"]
+list = [ "CHxx_alkane", "CH2_alkane", "O_ester", "C_ester",]
+type = 1
+p = [ 0.0, 1293.83, -899.46, 583.8, 0.0,]
+
+[torsions."[CHxx_alkane][O_ester][C_ester][O=ester]"]
+list = [ "CHxx_alkane", "O_ester", "C_ester", "O=ester",]
+type = 4
+p = [ 2039.19, -808.02, -1155.28, -75.9, 0.0, 0.0, 0.0,]
+
+[torsions."[CHxx_alkane][C_ester][O_ester][CHxx_alkane]"]
+list = [ "CHxx_alkane", "O_ester", "C_ester", "CHxx_alkane",]
+type = 4
+p = [ 2039.19, 808.02, -1155.28, 75.9, 0.0, 0.0, 0.0,]
+
+[torsions."[CH2_alkane][CH2_alcohol][OH_alcohol][cH_alcohol]"]
+list = [ "CH2_alkane", "CH2_alcohol", "OH_alcohol", "cH_alcohol",]
+type = 1
+p = [ -184.99, 82.0, 36.89, 303.85, 0.0,]
+
+[torsions."[CHxx_alkane][CH2_alkane][CH2_alcohol][OH_alcohol]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alcohol", "OH_alcohol",]
+type = 1
+p = [ 0.0, 206.45, -222.56, 1085.08, 0.0,]
+
+[torsions."[CH2_alcohol][CH2_alkane][CH2_alkane][CHxx_alkane]"]
+list = [ "CHxx_alkane", "CH2_alkane", "CH2_alkane", "CH2_alcohol",]
+type = 1
+p = [ 0.0, 355.03, -68.19, 791.32, 0.0,]
+
+[torsions."[CH3_alkane][CH2_EOH][OH_EOH][cH_EOH]"]
+list = [ "CH3_alkane", "CH2_EOH", "OH_EOH", "cH_EOH",]
+type = 1
+p = [ -184.99, 82.0, 36.89, 303.85, 0.0,]

@@ -1,0 +1,8 @@
+REMARK build with python i.e. notebook
+{%- for c in coordinates %}
+{{c -}}
+{% endfor %}
+{%- for line in neigbour_list %}
+CONECT    {{line -}}
+{% endfor %}
+END

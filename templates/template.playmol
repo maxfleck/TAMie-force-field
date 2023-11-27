@@ -1,0 +1,27 @@
+
+{%- for n, a in rd.nonbonded %}
+atom_type {{n}}  mie/cut {{a.epsilon}} {{a.sigma}} {{a.m}} 6.0
+diameter {{n}}  {{a.sigma}}
+mass {{n}}  {{a.mass}}
+charge {{n}}  {{a.charge}}
+{% endfor %}
+
+{% if rd.bonds %}
+{% for n, b in rd.bonds %}
+bond_type  {{n.0}}  {{n.1}}  harmonic  {{b.p.1}}  {{b.p.0}}
+{%- endfor %}
+{% endif %}
+
+{% if rd.angles %}
+{% for n, b in rd.angles %}
+angle_type {{n.0}} {{n.1}} {{n.2}} harmonic  {{b.p.1}} {{b.p.0}} 
+{%- endfor %}
+{% endif %}
+
+{% if rd.torsions %}
+{% for n, b in rd.torsions %}
+dihedral_type {{n.0}} {{n.1}} {{n.2}} {{n.3}} opls {{b.p.0}}  {{b.p.1}}  {{b.p.2}}  {{b.p.3}}
+{%- endfor %}
+{% endif %}
+
+

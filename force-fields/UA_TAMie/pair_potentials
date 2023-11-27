@@ -1,0 +1,63 @@
+VdW-site        mass(amu)     epsilon/k(K)  sigma(Angstrom)  m(repulsive_Mie-exponent)  cut-off(Angstrom) cut-off correction
+  CH3_alkane     15.035        136.318         3.6034           14                        14.0            
+  CH2_alkane     14.027        52.9133         4.0400           14                        14.0                      
+  CH3_ethane     15.035        130.780         3.6463           14                        14.0            
+  CH2_cyc5       14.027        74.5982         3.8462           16                        14.0            
+  CH2_cyc6       14.027        69.2408         3.9149           16                        14.0            
+  CH_olefin      13.019        53.9515         3.8234           14                        14.0            
+  CH_oleTra      13.019        53.9515         3.8234           14                        14.0            
+  CH_oleCis      13.019        53.9515         3.8234           14                        14.0            
+  CH2_olefin     14.027        100.681         3.6005           14                        14.0            
+  CH2_ethylene   14.027        104.0946        3.7122           16                        14.0            
+  CH_branch      13.015        40.             4.5              14                        14.0            
+  C_2branch      12.003        20.             2.5              14                        14.0            
+  O_ether        15.999        86.7            2.84             12                        14.0            
+  O_dme          15.999        54.36           3.213            12                        14.0            
+  O_acetone      15.999        69.184          3.112            12                        14.0            
+  C_acetone      12.011        34.592          3.942            12                        14.0            
+  O_ketone       15.999        65.55           3.093            12                        14.0            
+  C_ketone       12.011        32.775          3.919            12                        14.0            
+  CH_aldehyde    13.019        68.934          3.4941           12                        14.0            
+  O_aldehyde     15.999        100.85          3.0276           12                        14.0            
+  N_forN2        13.807         35.913         3.3136           12                        14.0                        
+  O_MeOH         17.007        101.667         3.100            12                        14.0            
+  CH3_MeOH       15.035        136.318         3.6034           14                        14.0            
+  OH_EOH         17.007         77.060         3.080            12                        14.0            
+  CH2_EOH        14.027         77.060         3.899            14                        14.0            
+  OH_alcohol     17.007         84.23          3.035            12                        14.0            
+  CH2_alcohol    14.027         84.23          3.842            14                        14.0            
+coulomb-site    mass(amu)     charge(e)
+  cH_MeOH        0.0000        +0.415
+  cO_MeOH        0.0000        -0.667
+  cCH3_MeOH      0.0000        +0.252
+  cH_EOH         0.0000        +0.413
+  cO_EOH         0.0000        -0.664
+  cC_EOH         0.0000        +0.251
+  cH_alcohol     0.0000        +0.404
+  cO_alcohol     0.0000        -0.650
+  cC_alcohol     0.0000        +0.246
+  cO_dme         0.0000        -0.35
+  cC_dme         0.0000        +0.175
+  cO_ether       0.0000        -0.30
+  cC_ether       0.0000        +0.15
+  cC_ketone      0.0000        +0.490
+  cO_ketone      0.0000        -0.490
+  cC_aldehyde    0.0000        +0.460
+  cO_aldehyde    0.0000        -0.422
+  cCn_aldeh      0.0000        -0.038
+  c_N_N2         0.0000        -0.482
+  c_Z_N2         0.4000        +0.964
+  c_C_ethylene   0.0000        +0.41
+  c_Z_ethylene   0.0000        -0.82
+
+References
+1) Hemmen, Gross, J. Phys. Chem. B 2015, 119, 11695−11707
+   LJ-groups: CH3_alkane, CH2_alkane, CH_olefin, CH_olefin, CH_oleTra, CH_oleCis, CH2_olefin, CH3_ethane
+2) Hemmen, Panagiotopoulos, Gross, J. Phys. Chem. B 2015, 119, 7087−7099
+   LJ-groups: O_ether, O_dme  (together with charges: cO_dme, cC_dme, cO_ether, cC_ether)
+3) to be published: Weidler, Gross
+   LJ-groups: O_acetone, C_acetone, O_ketone, C_ketone, N_forN2, CH2_cyc6, CH2_cyc5
+   (together with charges: cC_ketone, cO_ketone, c_N_N2, c_Z_N2)
+*) unpublished:
+  CH_branch
+  C_2branch

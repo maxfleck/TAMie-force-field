@@ -1,0 +1,14 @@
+pair_style      hybrid/overlay mie/cut 14.0 coul/long 14.0
+pair_modify tail yes shift no mix arithmetic
+
+
+{% for p in pairs %}
+pair_coeff  {{p.i}} {{p.j}}  mie/cut {{p.epsilon}} {{p.sigma}} {{p.m}} 6.0
+{%- endfor %}
+
+pair_coeff * * coul/long
+
+#kspace_style none
+#kspace_style    ewald/disp 0.0001
+kspace_style pppm 1.0e-4
+

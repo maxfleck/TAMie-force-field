@@ -1,0 +1,15 @@
+model      site          site          site          angle      potential-parameter
+ 2         CHxx_alkane   CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CH2_alcohol   OH_alcohol    cH_alcohol    107.4      45960.0
+ 2         CH2_alkane    CH2_alcohol   OH_alcohol    113.5      62250.0
+ 2         CH2_alcohol   CH2_alcohol   OH_alcohol    113.5      62250.0
+ 2         CHxx_alkane   CH2_alkane    CH2_alcohol   114.0      62500.0
+ 2         CH2_alcohol   CH2_alkane    CH2_alcohol   114.0      62500.0
+ 2         CH2_EOH       OH_EOH        cH_EOH        107.4      45960.0
+ 2         CH2_EOH       CH2_EOH       OH_EOH        113.5      62250.0
+ Note: 'xx' is a generic string for xx = ( 1, 2, 3 )
+
+ models:
+ =======
+ angle-bending  model  1:  fixed angle
+                model  2:  harmonic angle-bending potential

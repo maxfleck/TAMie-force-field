@@ -1,0 +1,10 @@
+i-TAMie force-field: scaling parameters for individualizing species.
+  propane        0.9988
+  butane         1.0024
+  pentane        1.00071
+  hexane         1.00036
+  heptane        1.0004
+  octane         1.00098
+  nonane         1.00090
+  decane         1.00155
+  butanone       1.01193

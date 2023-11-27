@@ -1,0 +1,13 @@
+model      site         site           bond-length    spring-constant
+ 1         CH2_alkane   CH2_alkane     1.54           1000.0
+ 1         CH2_alcohol  CH2_alcohol    1.514          1000.0
+ 1         CH2_EOH      CH2_EOH        1.514          1000.0
+ 1         OH_EOH       cH_EOH         0.970          1000.0
+ 1         CH2_EOH      OH_EOH         1.420          1000.0
+ 1         OH_alcohol   cH_alcohol     0.970          1000.0
+ 1         CH2_alcohol  OH_alcohol     1.420          1000.0
+ 1         CH2_alkane   CH2_alcohol    1.514          1000.0
+! models:
+! ====================
+! bond-length    model  1:  fixed bond-length
+!                model  2:  harmonic bond-length potential

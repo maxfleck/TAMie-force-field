@@ -1,0 +1,48 @@
+define rho as {{rho}}
+define seed as 1337
+define nmols as {{nmols}}
+define x as {{i}}
+
+include {{rd.name}}.playmol
+
+# atom A1 CH2_alkane
+{% for n, b, pn in rd.atoms %}
+atom  {{pn}}{{n}}  {{b}}
+{%- endfor %}
+
+{% for n, b, pn in rd.charges %}
+charge  {{pn}}{{n}}  {{b.charge}}
+{%- endfor %}
+
+# creates chemical bonds and automatically detects angles and dihedrals 
+# bond A1 A2
+{% for n,bn in rd.bonds %}
+bond  {{bn.0}}{{n.0}}  {{bn.1}}{{n.1}}
+{%- endfor %}
+
+
+build {{rd.name}}_playmol.xyz
+
+box density {0.602214*$rho} 
+# Da/Å³ ...Da=Dalton
+# Important: when the box density is specified, Playmol will 
+# automatically calculate the box side lengths when necessary. 
+# For this, it will sweep the whole list of molecular structures
+# defined via build and packmol commands in order to determine
+# the total mass of the system. Playmol will not perform any unit
+# conversion. Consequently, the specified density value must be
+# consistent with the mass and length units used in other commands. For 
+# instance, if LAMMPS real units are considered (mass in g/mol and lengths in Å),
+# then the density must be provided in Da/Å³ (Daltons per cubic Angstrom).
+# In this case, values originally in g/cm³ must be multiplied by 0.60221413.
+
+packmol seed $seed 
+packmol pack mol({{rd.atoms.0.2}}{{rd.atoms.0.0}}) $nmols 
+packmol action execute
+
+# Formatting and storage
+write    lmp/models {{rd.name}}_$x.lmp
+write    xyz {{rd.name}}_$x.xyz
+write    summary {{rd.name}}_$x.log
+write    summary
+

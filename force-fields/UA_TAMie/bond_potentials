@@ -1,0 +1,63 @@
+model      site         site           bond-length    spring-constant
+ 1         CH3_alkane   CH2_alkane     1.74           0.0
+ 1         CH2_alkane   CH2_alkane     1.54           0.0
+ 1         CH2_cyc6     CH2_cyc6       1.54           0.0
+ 1         CH2_cyc5     CH2_cyc5       1.54           0.0
+ 1         CH2_olefin   CH_olefin      1.33           0.0
+ 1         CH_olefin    CH_olefin      1.33           0.0
+ 1         CH_olefin    CH2_alkane     1.54           0.0
+ 1         CH_olefin    CH3_alkane     1.74           0.0
+ 1         CH_oleCis    CH_oleCis      1.33           0.0
+ 1         CH_oleCis    CH2_alkane     1.54           0.0
+ 1         CH_oleCis    CH3_alkane     1.74           0.0
+ 1         CH_oleTra    CH_oleTra      1.33           0.0
+ 1         CH_oleTra    CH2_alkane     1.54           0.0
+ 1         CH_oleTra    CH3_alkane     1.74           0.0
+ 1         CH3_alkane   O_dme          1.61           0.0
+ 1         CH2_alkane   O_ether        1.41           0.0
+ 1         CH3_alkane   O_ether        1.61           0.0
+ 1         CH3_ethane   CH3_ethane     1.94           0.0
+ 1         CH2_alkane   CH_branch      1.54           0.0
+ 1         CH3_alkane   CH_branch      1.74           0.0
+ 1         CH2_alkane   C_2branch      1.54           0.0
+ 1         CH3_alkane   C_2branch      1.74           0.0
+ 1         CH3_alkyne   C_alkyne       1.47           0.0
+ 1         C_alkyne     C_alkyne       1.20           0.0
+ 1         CH3_alkane   C_ketone       1.72           0.0
+ 1         CH2_alkane   C_ketone       1.52           0.0
+ 1         C_ketone     O_ketone       1.229          0.0
+ 1         CH3_alkane   C_acetone      1.72           0.0
+ 1         CH2_alkane   C_acetone      1.52           0.0
+ 1         C_acetone    O_acetone      1.229          0.0
+ 1         CH2_alkane   CH_aldehyde    1.52           0.0
+ 1         CH3_alkane   CH_aldehyde    1.72           0.0
+ 1         CH_aldehyde  O_aldehyde     1.217          0.0
+ 1         N_forN2      N_forN2        1.098          0.0
+ 1         N_forN2      c_Z_N2         0.549          0.0
+ 1         N_N2_q0      N_N2_q0        1.098          0.0
+ 1         CH2_ethylene CH2_ethylene   1.33           0.0
+ 1         CH2_ethylene c_Z_ethylene   0.665          0.0
+ 1         CH3_alkane   O_formate      1.61           0.0
+ 1         CH2_alkane   O_formate      1.41           0.0
+ 1         O_formate    CH_formate     1.344          0.0
+ 1         CH_formate   O=formate      1.20           0.0
+ 1         CH3_alkane   O_ester        1.61           0.0
+ 1         CH2_alkane   O_ester        1.41           0.0
+ 1         O_ester      C_ester        1.344          0.0
+ 1         C_ester      O=ester        1.20           0.0
+ 1         C_ester      CH2_alkane     1.52           0.0
+ 1         C_ester      CH3_alkane     1.72           0.0
+ 1         O_MeOH       cH_MeOH        0.970          0.0
+ 1         CH3_MeOH     O_MeOH         1.620          0.0
+ 1         OH_EOH       cH_EOH         0.970          0.0
+ 1         CH2_EOH      OH_EOH         1.420          0.0
+ 1         CH3_alkane   CH2_EOH        1.714          0.0
+ 1         OH_alcohol   cH_alcohol     0.970          0.0
+ 1         CH2_alcohol  OH_alcohol     1.420          0.0
+ 1         CH2_alkane   CH2_alcohol    1.514          0.0
+
+
+! models:
+! ====================
+! bond-length    model  1:  fixed bond-length
+!                model  2:  harmonic bond-length potential

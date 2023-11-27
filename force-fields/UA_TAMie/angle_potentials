@@ -1,0 +1,52 @@
+model      site          site          site          angle      potential-parameter
+ 2         CHxx_alkane   CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CHxx_alkane   CH_branch     CHxx_alkane   112.0      62500.0
+ 2         CHxx_alkane   CH2_alkane    CH_branch     114.0      62500.0
+ 2         CHxx_alkane   C_2branch     CHxx_alkane   109.47     62500.0
+ 2         CHxx_alkane   CH2_alkane    C_2branch     114.0      62500.0
+ 2         CH2_cyc6      CH2_cyc6      CH2_cyc6      114.0      62500.0
+ 2         CH2_cyc5      CH2_cyc5      CH2_cyc5      105.5      62500.0
+ 2         CH2_olefin    CH_olefin     CHxx_alkane   119.7      70420.0
+ 2         CH_olefin     CH_olefin     CHxx_alkane   119.7      70420.0
+ 2         CH_oleCis     CH_oleCis     CHxx_alkane   119.7      70420.0
+ 2         CH_oleTra     CH_oleTra     CHxx_alkane   119.7      70420.0
+ 2         CH_olefin     CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CH_oleCis     CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CH_oleTra     CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CHxx_alkane   O_dme         CHxx_alkane   112.0      60400.0
+ 2         CHxx_alkane   O_ether       CHxx_alkane   112.0      60400.0
+ 2         CH3_alksht    O_ether       CH3_alksht    112.0      60400.0
+ 2         CHxx_alkane   CH2_alkane    O_ether       112.0      50300.0
+ 2         CH3_alkyne    C_alkyne      C_alkyne      180.0      19121.0
+ 2         CHxx_alkane   C_ketone      CHxx_alkane   117.2      62500.0
+ 2         CHxx_alkane   C_ketone      O_ketone      121.4      62500.0
+ 2         C_ketone      CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CHxx_alkane   C_acetone     CHxx_alkane   117.2      62500.0
+ 2         CHxx_alkane   C_acetone     O_acetone     121.4      62500.0
+ 2         CH_aldehyde   CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         O_aldehyde    CH_aldehyde   CHxx_alkane   121.4      62500.0
+ 1         N_forN2       N_forN2       c_Z_N2          0.0          0.0
+ 1         CH2_ethylene  CH2_ethylene  c_Z_ethylene    0.0          0.0
+ 2         CHxx_alkane   CH2_alkane    O_formate     108.8      88418.0
+ 2         CHxx_alkane   O_formate     CH_formate    116.4      72570.0
+ 2         O_formate     CH_formate    O=formate     126.6     136890.0
+ 2         CHxx_alkane   CH2_alkane    O_ester       108.8      88418.0
+ 2         CHxx_alkane   O_ester       C_ester       115.0      62500.0
+ 2         O_ester       C_ester       O=ester       125.0      62500.0
+ 2         O_ester       C_ester       CHxx_alkane   110.0      70600.0
+ 2         O=ester       C_ester       CHxx_alkane   125.0      62500.0
+ 2         CHxx_alkane   CH2_alkane    C_ester       114.0      62500.0
+ 2         CH3_MeOH      O_MeOH        cH_MeOH       107.4      45960.0
+ 2         CH2_EOH       OH_EOH        cH_EOH        107.4      45960.0
+ 2         CH3_alkane    CH2_EOH       OH_EOH        113.5      62250.0
+ 2         CH2_alcohol   OH_alcohol    cH_alcohol    107.4      45960.0
+ 2         CH2_alkane    CH2_alcohol   OH_alcohol    113.5      62250.0
+ 2         CHxx_alkane   CH2_alkane    CH2_alcohol   114.0      62500.0
+
+
+ Note: 'xx' is a generic string for xx = ( 1, 2, 3 )
+
+ models:
+ =======
+ angle-bending  model  1:  fixed angle
+                model  2:  harmonic angle-bending potential

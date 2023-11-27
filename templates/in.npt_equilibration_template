@@ -1,0 +1,152 @@
+units real
+dimension 3
+boundary p p p
+atom_style      full
+
+
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+
+pair_style      hybrid/overlay mie/cut 14.0 coul/long 10.0
+pair_modify tail yes shift no mix arithmetic
+
+
+read_data       $SET_START_PATH
+
+{% for p in pairs %}
+pair_coeff  {{p.i}} {{p.j}}  mie/cut {{p.epsilon}} {{p.sigma}} {{p.m}} 6.0
+{%- endfor %}
+
+pair_coeff * * coul/long
+
+
+# Intramolecular vdw interaction scaling
+# https://docs.lammps.org/special_bonds.html
+# standard settings shoul suit us :)
+special_bonds lj 0.0 0.0 0.0  coul 0.0 0.0 0.0
+
+#kspace_style none
+#kspace_style    ewald/disp 0.0001
+kspace_style pppm 1.0e-4
+
+
+variable        seed                equal   $SET_SEED
+
+# ============= VARIABLES ===============
+variable        temperature         equal       $SET_TEMPERATURE
+variable        pressure            equal       $SET_PRESSURE
+variable        npt_time            equal       $SET_STEPS # npt equilibration
+variable        deform_time         equal       50000  # deformation to equilibrium box size
+variable        prod_time           equal       v_npt_time/4
+variable        timestep            equal       $SET_TIMESTEP
+variable        atoms               equal       atoms
+
+# ------------- output ---------------
+variable        to_screen_every     equal       10000
+variable        to_file_every       equal       100
+variable        step                equal       step
+variable        time                equal       time
+
+# ------------ variables for output files ---------------
+# pressure tensor
+variable pxx equal pxx
+variable pyy equal pyy
+variable pzz equal pzz
+variable pxy equal pxy
+variable pxz equal pxz
+variable pyz equal pyz
+
+variable pe equal pe
+variable ke equal ke
+variable ebond equal ebond
+variable eangle equal eangle
+variable edihed equal edihed
+variable vol equal vol
+variable press equal press
+variable temp equal temp
+variable dens equal density
+variable boxlength equal vol^(1/3)
+# ============= END VARIABLES ===============
+
+
+# ============= NEIGHBORLIST PARAMETERS  ===============
+neighbor        2.0 bin
+neigh_modify    every 1 delay 0 check yes
+
+
+# ============= THERMO OUTPUT / FILE OUTPUT =============
+thermo          ${to_screen_every}
+thermo_style    custom step pe ke temp press vol v_dens ebond eangle edihed v_boxlength
+
+# dump            trj all atom ${to_file_every} mymol.lammpstrj
+
+
+# ============= RUN MINIMIZATION =============
+minimize 1.0e-4 1.0e-6 100 1000
+reset_timestep 0
+
+
+# ============= RUN NPT SIMULATION =============
+# ============= GENERATE VELOCITIES =============
+velocity        all create ${temperature} ${seed} rot yes dist gaussian
+timestep        ${timestep}
+
+# fix             shake all shake 0.0001 50 0 b 1
+run_style       respa 2 2 bond 1 pair 2
+fix             int_npt all npt temp ${temperature} ${temperature} 100.0 iso ${pressure} ${pressure} 100.0
+
+# ---- Compute average boxlength
+variable        current_length equal vol^(1/3)
+variable        ave_time equal 0.7*${npt_time}
+fix             ave_length all ave/time 1 1 100 v_current_length ave running start ${ave_time}
+fix             prop_eq all ave/time 1 1 ${to_file_every} v_time v_pe v_ke v_ebond v_eangle v_edihed v_vol v_temp v_press v_dens &
+                    title1 "step time potential_energy kinetic_energy bond_energy angle_energy dihedral_energy volume temperature pressure density" &
+                    file $SET_OUT_PROPERTIES ave one format %20.8g
+
+# write restart files periodically
+restart         100000 $SET_OUT_RESTART_1 $SET_OUT_RESTART_2
+run             ${npt_time}
+# ============= END RUN NPT SIMULATION =============
+
+
+
+# ============= DEFORM EQUILIBRIUM BOX SIMULATION =============
+unfix           int_npt
+variable        mean_box_length equal f_ave_length
+print           "Mean box length: ${mean_box_length}"
+fix             deform      all     deform 1 &
+                                    x final  0.0 ${mean_box_length} &
+                                    y final  0.0 ${mean_box_length} &
+                                    z final  0.0 ${mean_box_length} &
+                                    remap v &
+                                    units box
+unfix           ave_length
+fix             int_deform   all     nvt/sllod &
+                             temp    ${temperature} ${temperature} 100
+run             ${deform_time}
+# ============= END DEFORM EQUILIBRIUM BOX SIMULATION =============
+
+
+
+# ============= RUN NVT SIMULATION =============
+# remove fixes
+unfix           int_deform
+unfix           deform
+
+# ----- INTRAMOLECULAR HISTOGRAMS
+compute         bonds all bond/local dist 
+fix             bond_hist all ave/histo 1 100 1000 1.60 1.90 501 c_bonds mode vector ave running overwrite file $SET_OUT_BOND_HIST
+
+# compute         angles all angle/local eng
+# fix             angle_hist all ave/histo 1 100 1000 90.0 140.0 501 c_angles mode vector ave running overwrite file angle.histo
+
+
+fix             int_nvt all nvt temp ${temperature} ${temperature} 2000.0
+run             ${prod_time}
+
+# ============= END RUN NVT SIMULATION =============
+# write a single restart files at the end
+write_restart   $SET_OUT_RESTART
+
+

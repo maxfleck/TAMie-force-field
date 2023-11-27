@@ -1,0 +1,51 @@
+atomtypes
+{{rd.atom_number}}
+
+begin atom-atomtype
+{%- for n,m in rd.atoms %}
+{{n}}  {{m -}}
+{% endfor %}
+end atom-atomtype
+
+vdwtype Mie
+dihedraltype OPLS
+scaling_1_4_vdw 0.0
+scaling_1_4_charge 0.0
+{% for n, p in rd.nonbonded %}
+nonbonded
+{{n}}
+Sigma {{p.sigma}}
+Epsilon {{p.epsilon}}
+Repulsive_Exponent {{p.m}}
+Dispersive_Exponent 6.0 
+atom_type_charge {{p.charge}}
+{% endfor %}
+
+{%- for n, p in rd.bonds %}
+bonds
+{{n.0}} {{n.1}} 
+Length {{p.p.0}} 
+Constant fixed
+{% endfor %}
+
+{%- for n, p in rd.angles %}
+angles
+{{n.0}} {{n.1}} {{n.2}} 
+Angle {{p.p.0}} 
+Constant {{p.p.0}}
+{% endfor %}
+
+{%- for n, p in rd.torsions %}
+dihedrals
+{{n.0}} {{n.1}} {{n.2}} {{n.3}} 
+a0 {{p.p.0}}
+a1 {{p.p.1}}
+a2 {{p.p.2}}
+a3 {{p.p.3}}
+{% endfor %}
+
+{%- for n in rd.atom_numbers %}
+charge
+{{n}}
+{% endfor %}
+
