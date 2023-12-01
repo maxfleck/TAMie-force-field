@@ -23,14 +23,10 @@ Masses
 
 # Elements
 
-Bond Coeffs
+{%if rd.bond_styles|length > 0%}Bond Coeffs{%- endif %}
 {%- if rd.bond_styles|length > 1 %}
 {% for n, p in rd.bond_paras %}
-{%- if p.style == "table" %}
-{{n}} {{p.style}} {{p.file}}  {{p.entry}} # {{p.list.0}} {{p.list.1}}
-{%- else %}
 {{n}} {{p.style}} {{p.p.1}} {{p.p.0}} # {{p.list.0}} {{p.list.1}}
-{%- endif %}
 {%- endfor %}
 {%- else %}
 {% for n, p in rd.bond_paras %}
@@ -38,7 +34,7 @@ Bond Coeffs
 {%- endfor %}
 {%- endif %}
 
-Angle Coeffs 
+{%if rd.angle_styles|length > 0%}Angle Coeffs{%- endif %}
 {%- if rd.angle_styles|length > 1 %}
 {% for n, p in rd.angle_paras %}
 {{n}} {{p.style}} {{p.p.1}} {{p.p.0}} # {{p.list.0}} {{p.list.1}} {{p.list.2}}
@@ -49,7 +45,7 @@ Angle Coeffs
 {%- endfor %}
 {%- endif %}
 
-Dihedral Coeffs
+{%if rd.torsion_styles|length > 0%}Dihedral Coeffs{%- endif %}
 {%- if rd.torsion_styles|length > 1 %}
 {% for n, p in rd.torsion_paras %}
 {%- if p.p|length > 5 %}

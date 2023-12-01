@@ -1,9 +1,14 @@
+# Force field input for playmol
 
+{% set seen = [] %}
 {%- for n, a in rd.nonbonded %}
+{%-if n not in seen%}
 atom_type {{n}}  mie/cut {{a.epsilon}} {{a.sigma}} {{a.m}} 6.0
 diameter {{n}}  {{a.sigma}}
 mass {{n}}  {{a.mass}}
 charge {{n}}  {{a.charge}}
+{{ seen.append(n) or ""}}
+{%-endif%}
 {% endfor %}
 
 {% if rd.bonds %}
