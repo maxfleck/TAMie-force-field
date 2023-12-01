@@ -1,0 +1,40 @@
+--------------------------------------------------------------------------------
+SUMMARY
+--------------------------------------------------------------------------------
+Specified:
+    3 atom types.
+    5 bond types.
+    3 angle types.
+    2 dihedral types.
+    9 atoms.
+    7 bonds.
+
+Detected:
+    2 molecules.
+
+Effectively usable:
+    3 atom types.
+    5 bond types.
+
+Molecule[1]:
+- Amount: 2
+- Mass: 62.0519981
+- Charge: 0.00000000
+- Number of atoms: 6
+- Atoms: cH_alcohol1 OH_alcohol2 CH2_alcohol3 CH2_alcohol4 OH_alcohol5
+ cH_alcohol6
+
+Molecule[2]:
+- Amount: 2
+- Mass: 31.0259991
+- Charge: 0.00000000
+- Number of atoms: 3
+- Atoms: cH_alcohol7 OH_alcohol8 CH2_alcohol9
+
+System:
+- Molecules: 4
+- Total mass: 186.156006
+- Box lengths: 31.3840313 31.3840313 31.3840313
+- Box density: 6.02213992E-03
+- Residual charge: 0.00000000
+--------------------------------------------------------------------------------

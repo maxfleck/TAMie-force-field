@@ -1,6 +1,6 @@
 [atoms.OH_alcohol]
 name = "OH_alcohol"
-mass = 17.007
+mass = 15.999
 epsilon = 0.1673
 sigma = 3.035
 m = 12.0
@@ -40,7 +40,7 @@ style = "hybrid Mie/cut coul/long"
 
 [atoms.OH_EOH]
 name = "OH_EOH"
-mass = 17.007
+mass = 15.999
 epsilon = 0.1515
 sigma = 3.087
 m = 12.0

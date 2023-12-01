@@ -49,7 +49,7 @@ Masses
 {%- if rd.torsion_styles|length > 1 %}
 {% for n, p in rd.torsion_paras %}
 {%- if p.p|length > 5 %}
-{{n}} {{p.style}} {{p.p|length-1}} {%- for a in p.p %} {{a}} {%- endfor %} # {{p.list.0}} {{p.list.1}} {{p.list.2}} {{p.list.3}}
+{{n}} {{p.style}} {{p.p|length-1}} {%- for a in p.p[:-1] %} {{a}} {%- endfor %} # {{p.list.0}} {{p.list.1}} {{p.list.2}} {{p.list.3}}
 {%- else %}
 {{n}} {{p.style}} {%- for a in p.p[1:-1] %} {{a}} {%- endfor %} 0.0 # {{p.list.0}} {{p.list.1}} {{p.list.2}} {{p.list.3}}
 {%- endif %}
