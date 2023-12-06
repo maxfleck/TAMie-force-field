@@ -50,7 +50,7 @@ style = "hybrid Mie/cut coul/long"
 
 [atoms.cH_alcohol]
 name = "H"
-mass = 1.0
+mass = 1.008
 epsilon = 0.0
 sigma = 1.0
 m = 12.0
@@ -60,7 +60,7 @@ style = "hybrid Mie/cut coul/long"
 
 [atoms.cH_EOH]
 name = "H"
-mass = 1.0
+mass = 1.008
 epsilon = 0.0
 sigma = 1.0
 m = 12.0
@@ -71,49 +71,49 @@ style = "hybrid Mie/cut coul/long"
 [bonds."[CH2_alkane][CH2_alkane]"]
 list = [ "CH2_alkane", "CH2_alkane",]
 type = 1
-p = [ 1.54, 1000.0,]
+p = [ 1.54, 200.0,]
 style = "harmonic"
 
 [bonds."[CH2_alcohol][CH2_alcohol]"]
 list = [ "CH2_alcohol", "CH2_alcohol",]
 type = 1
-p = [ 1.514, 1000.0,]
+p = [ 1.514, 200.0,]
 style = "harmonic"
 
 [bonds."[CH2_EOH][CH2_EOH]"]
 list = [ "CH2_EOH", "CH2_EOH",]
 type = 1
-p = [ 1.514, 1000.0,]
+p = [ 1.514, 200.0,]
 style = "harmonic"
 
 [bonds."[OH_EOH][cH_EOH]"]
 list = [ "OH_EOH", "cH_EOH",]
 type = 1
-p = [ 0.97, 1000.0,]
+p = [ 0.97, 200.0,]
 style = "harmonic"
 
 [bonds."[CH2_EOH][OH_EOH]"]
 list = [ "CH2_EOH", "OH_EOH",]
 type = 1
-p = [ 1.42, 1000.0,]
+p = [ 1.42, 200.0,]
 style = "harmonic"
 
 [bonds."[OH_alcohol][cH_alcohol]"]
 list = [ "OH_alcohol", "cH_alcohol",]
 type = 1
-p = [ 0.97, 1000.0,]
+p = [ 0.97, 200.0,]
 style = "harmonic"
 
 [bonds."[CH2_alcohol][OH_alcohol]"]
 list = [ "CH2_alcohol", "OH_alcohol",]
 type = 1
-p = [ 1.42, 1000.0,]
+p = [ 1.42, 200.0,]
 style = "harmonic"
 
 [bonds."[CH2_alcohol][CH2_alkane]"]
 list = [ "CH2_alkane", "CH2_alcohol",]
 type = 1
-p = [ 1.514, 1000.0,]
+p = [ 1.514, 200.0,]
 style = "harmonic"
 
 [angles."[CHxx_alkane][CH2_alkane][CHxx_alkane]"]
