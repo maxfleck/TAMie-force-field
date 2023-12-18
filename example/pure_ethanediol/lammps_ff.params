@@ -1,0 +1,9 @@
+# Van der Waals interactions
+
+
+pair_coeff  1 1  mie/cut 0.0 1.0 12.0 6.0 # H  H
+pair_coeff  1 2  mie/cut 0.0 2.0175 12.0 6.0 # H  OH_alcohol
+pair_coeff  1 3  mie/cut 0.0 2.421 13.0 6.0 # H  CH2_alcohol
+pair_coeff  2 2  mie/cut 0.1673 3.035 12.0 6.0 # OH_alcohol  OH_alcohol
+pair_coeff  2 3  mie/cut 0.1673 3.4385 13.0 6.0 # OH_alcohol  CH2_alcohol
+pair_coeff  3 3  mie/cut 0.1673 3.842 14.0 6.0 # CH2_alcohol  CH2_alcohol

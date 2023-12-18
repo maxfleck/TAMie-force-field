@@ -1,24 +1,30 @@
-define rho as {{rho}}
-define seed as {{seed}}
+define rho as 1.125
+define seed as 944734
 
-include {{rd.force_field}}
+include ../playmol_ff.playmol
 
 # Definition of atoms
 # atoms force_field_type charge
-{% for no, na, c in rd.atoms %}
-atom  {{na}}{{no}}  {{na}} {{c}}
-{%- endfor %}
+
+atom  cH_alcohol1  cH_alcohol 0.404
+atom  OH_alcohol2  OH_alcohol -0.65
+atom  CH2_alcohol3  CH2_alcohol 0.246
+atom  CH2_alcohol4  CH2_alcohol 0.246
+atom  OH_alcohol5  OH_alcohol -0.65
+atom  cH_alcohol6  cH_alcohol 0.404
 
 # Definiton of covalent bonds. Playmol automatically detects angles and dihedrals.
 # bond A1 A2
-{% for n,bn in rd.bonds %}
-bond  {{bn.0}}{{n.0}}  {{bn.1}}{{n.1}}
-{%- endfor %}
+
+bond  cH_alcohol1  OH_alcohol2
+bond  OH_alcohol2  CH2_alcohol3
+bond  CH2_alcohol3  CH2_alcohol4
+bond  CH2_alcohol4  OH_alcohol5
+bond  OH_alcohol5  cH_alcohol6
 
 # Include the xyz structure of each component
-{% for xyz in rd.xyz %}
-build {{xyz}}
-{%- endfor %}
+
+build ../ethanediol.xyz
 
 # Box density in Da/AA³ ... with Da=Dalton, AA=Angstrom
 box density {0.602214*$rho}
@@ -37,12 +43,9 @@ box density {0.602214*$rho}
 # Add the number of molecules per component
 
 packmol seed $seed retry 0.95
-{%- for n,mol in rd.mol %}
-packmol pack mol({{mol}}) {{n}}
-{%- endfor %}
+packmol pack mol(cH_alcohol1) 500
 packmol action execute
 
 # Formatting and storage
-write    xyz {{rd.final_xyz}}
-write    summary {{rd.final_log}}
-
+write    xyz pure_ethanediol_0.xyz
+write    summary pure_ethanediol_0.log
