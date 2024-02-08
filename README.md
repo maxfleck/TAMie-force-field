@@ -109,10 +109,9 @@ LAMMPS_class.prepare_lammps_force_field()
 
 # 3: Tabled bond interactions
 
-torsion_pairs            = [ [ "OH_alcohol", "OH_alcohol" ] ]
 LAMMPS_table_destination = f"{working_folder}/bonded_interactions.table"
 
-write_tabled_bond( mol_list = LAMMPS_class.mol_list, force_field = LAMMPS_class.ff, torsion_pairs = torsion_pairs, 
+write_tabled_bond( mol_list = LAMMPS_class.mol_list, force_field = LAMMPS_class.ff, 
                    table_path = LAMMPS_table_destination, table_template = LAMMPS_table_template )
 ```
 
