@@ -108,7 +108,7 @@ def apply_charge_group_approach( mol_list: List[molecule], force_field: Dict[str
 
 
 
-def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict], torsion_pairs: List[List], 
+def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict], 
                        table_path: str, table_template: str, evaluation_steps: int = 1000 ):
     """
     This function writes an input table for the LAMMPS bond style "table". The charge group approach is used, to include the 1.4-Mie interaction of the special torsion pair provided,
@@ -117,7 +117,6 @@ def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict], to
     Args:
         mol_list (List[molecule]): Moleculegraph objects of the molecules under investigation.
         force_field (dict[dict]): Dictionary contains the force field types of the molecule under investigation.
-        torsion_pairs (List[List]): List with Lists containing the force field keys for the special torsion pair under investigation. Should match the lenght of components provided.
         table_path (str): Path where the table should be written to.
         table_template (str): Path to the Jinja2 template to write the table.
         steps_nonbonded (int, optional): Number of evaluation points for all special bonds. Defaults to 1000.
@@ -134,88 +133,87 @@ def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict], to
     cut_off         = max( p["cut"] for _,p in force_field["atoms"].items() )
 
     # Loop through every molecule and check if there are special bonds
-    for mol, pair in zip( mol_list, torsion_pairs ):
-        for sbi,sbk in zip( mol.bond_list, mol.bond_keys ):
+    for sbi,sbk in zip( mol.bond_list, mol.bond_keys ):
 
-            # Check if it is a special bond and if the special bond is already evaluted. In that case, skip the reevaluation.
-            if "special" in sbk and not sbk in [ td["list"] for td in tabled_dict_list ]:
+        # Check if it is a special bond and if the special bond is already evaluted. In that case, skip the reevaluation.
+        if "special" in sbk and not sbk in [ td["list"] for td in tabled_dict_list ]:
 
-                # Extract the force field keys of the atoms in this bond.
-                ff_keys = re.findall(r'\[(.*?)\]', sbk)[1:]
+            # Extract the force field keys of the atoms in this bond.
+            ff_keys = re.findall(r'\[(.*?)\]', sbk)[1:]
 
-                # Evalute the bonded interaction for every bonded special bond and the Coulomb interaction
-                if mol.get_distance(*sbi) == 1:
+            # Evalute the bonded interaction for every bonded special bond and the Coulomb interaction
+            if mol.get_distance(*sbi) == 1:
 
-                    # K is given in Kcal/mol/Angstrom^2, r0 in Angstrom
-                    r0, K    = force_field["bonds"][moleculegraph.make_graph( ff_keys )]["p"]
+                # K is given in Kcal/mol/Angstrom^2, r0 in Angstrom
+                r0, K    = force_field["bonds"][moleculegraph.make_graph( ff_keys )]["p"]
 
-                    # Get Coulomb parameter (charges and cut off)
-                    charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
-                    
-                    # Distances evaluated ±30% around r0.
-                    r_eval   = np.linspace( 0.7*r0, 1.3*r0, evaluation_steps )
-                    
-                    # Compute bonded interaction 
-                    u_bond, f_bond  = calc_bond( r_eval, r0, K, "energy"), calc_bond( r_eval, r0, K, "force")
-
-                    # Compute Coulomb interaction
-                    u_coulomb, f_coulomb = calc_coulomb( r_eval, *charges, "energy"), calc_coulomb( r_eval, *charges, "force")
-
-                    # Get total energy and force
-                    u_total, f_total     = u_bond + u_coulomb, f_bond + f_coulomb
-
-
-                # Evaluate the Mie interaction for the special 1-4 pair in the reparametrized torsion, as well as Coulomb.
-                # Furthermore for all intramolecular interactions with a higher bond distance than 3. (Since LAMMPS tabled bonds alter the
-                # understanding of the molecule. Thus, if a tabled bond of a 1-4 pair is introduced, the 1-5 interaction do not longer have a bond distance of 4,
-                # rather it now only has a distance of 2. Hence, LAMMPS will not compute non bonded interactions, and therefore they needed to be presented as tabled
-                # bonds as well)
-                elif ( mol.get_distance(*sbi) == 3 and all( p in ff_keys for p in pair ) ) or ( mol.get_distance(*sbi) > 3 ):
-
-                    # Get Coulomb and vdW parameter (charges, epsilon, sigma and repulsive exponent)
-                    charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
-                    epsilons = [ force_field["atoms"][atom_key]["epsilon"] for atom_key in ff_keys ]
-                    sigmas   = [ force_field["atoms"][atom_key]["sigma"] for atom_key in ff_keys ]
-                    ns       = [ force_field["atoms"][atom_key]["m"] for atom_key in ff_keys ]
-
-                    # Use mixing Lorentz-Berthelot mixing rule for sigma and epsilon, as well as an arithmetic mean for the repulsive exponent
-                    n        = np.mean( ns )
-                    sigma    = np.mean( sigmas )
-                    epsilon  = np.sqrt( np.prod( epsilons ) )
-
-                    # Evaluated distances 
-                    r_eval   = np.concatenate( [np.linspace( 0.01*cut_off, 0.3*cut_off, n1), np.linspace( 0.301*cut_off, cut_off, n2)] )
-                    
-                    # Compute Mie interaction up to the cut off radius
-                    u_mie, f_mie         = calc_mie( r_eval, sigma, epsilon, n, 6, "energy"), calc_mie( r_eval, sigma, epsilon, n, 6, "force")
-
-                    # Compute Coulomb interaction up to the cut off radius. 
-                    u_coulomb, f_coulomb = calc_coulomb( r_eval, *charges, "energy"), calc_coulomb( r_eval, *charges, "force")
-
-                    # Get total energy and force
-                    u_total, f_total     = u_mie + u_coulomb, f_mie + f_coulomb
+                # Get Coulomb parameter (charges and cut off)
+                charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
                 
+                # Distances evaluated ±30% around r0.
+                r_eval   = np.linspace( 0.7*r0, 1.3*r0, evaluation_steps )
+                
+                # Compute bonded interaction 
+                u_bond, f_bond  = calc_bond( r_eval, r0, K, "energy"), calc_bond( r_eval, r0, K, "force")
 
-                # Evaluate only the Coulomb interaction (in the case for all 1-3 interactions)
-                else:
-                    
-                    # Get Coulomb parameter (charges and cut off)
-                    charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
+                # Compute Coulomb interaction
+                u_coulomb, f_coulomb = calc_coulomb( r_eval, *charges, "energy"), calc_coulomb( r_eval, *charges, "force")
 
-                    # Evaluated distances 
-                    r_eval   = np.concatenate( [np.linspace( 0.01*cut_off, 0.3*cut_off, n1), np.linspace( 0.301*cut_off, cut_off, n2)] )
+                # Get total energy and force
+                u_total, f_total     = u_bond + u_coulomb, f_bond + f_coulomb
 
-                    # Compute Coulomb interaction up to the cut off radius. 
-                    u_coulomb, f_coulomb = calc_coulomb( r_eval, *charges, "energy"), calc_coulomb( r_eval, *charges, "force")
 
-                    # Get total energy and force
-                    u_total, f_total     = u_coulomb, f_coulomb
+            # Evaluate the 1-4 Mie and Coulomb interaction for every special bond molecule.
+            # Furthermore, include all intramolecular interactions with a higher bond distance than 3. (Since LAMMPS tabled bonds alter the
+            # understanding of the molecule. Thus, if a tabled bond of a 1-4 pair is introduced, the 1-5 interaction do not longer have a bond distance of 4,
+            # rather it now only has a distance of 2. Hence, LAMMPS will not compute non bonded interactions, and therefore they needed to be presented as tabled
+            # bonds as well)
+            elif mol.get_distance(*sbi) >= 3 :
 
-                # Save the evaluated distance, energy and force into the table dict
-                tabled_dict_list.append( { "list": sbk, 
-                                            "N": len(r_eval), 
-                                            "p": list( zip( range(1, evaluation_steps + 1), r_eval, u_total, f_total ) )
-                                            } )
+                # Get Coulomb and vdW parameter (charges, epsilon, sigma and repulsive exponent)
+                charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
+                epsilons = [ force_field["atoms"][atom_key]["epsilon"] for atom_key in ff_keys ]
+                sigmas   = [ force_field["atoms"][atom_key]["sigma"] for atom_key in ff_keys ]
+                ns       = [ force_field["atoms"][atom_key]["m"] for atom_key in ff_keys ]
+
+                # Use mixing Lorentz-Berthelot mixing rule for sigma and epsilon, as well as an arithmetic mean for the repulsive exponent
+                n        = np.mean( ns )
+                sigma    = np.mean( sigmas )
+                epsilon  = np.sqrt( np.prod( epsilons ) )
+
+                # Evaluated distances 
+                r_eval   = np.concatenate( [np.linspace( 0.01*cut_off, 0.3*cut_off, n1), np.linspace( 0.301*cut_off, cut_off, n2)] )
+                
+                # Compute Mie interaction up to the cut off radius
+                u_mie, f_mie         = calc_mie( r_eval, sigma, epsilon, n, 6, "energy"), calc_mie( r_eval, sigma, epsilon, n, 6, "force")
+
+                # Compute Coulomb interaction up to the cut off radius. 
+                u_coulomb, f_coulomb = calc_coulomb( r_eval, *charges, "energy"), calc_coulomb( r_eval, *charges, "force")
+
+                # Get total energy and force
+                u_total, f_total     = u_mie + u_coulomb, f_mie + f_coulomb
+            
+
+            # Evaluate only the Coulomb interaction (in the case for all 1-3 interactions)
+            else:
+                
+                # Get Coulomb parameter (charges and cut off)
+                charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
+
+                # Evaluated distances 
+                r_eval   = np.concatenate( [np.linspace( 0.01*cut_off, 0.3*cut_off, n1), np.linspace( 0.301*cut_off, cut_off, n2)] )
+
+                # Compute Coulomb interaction up to the cut off radius. 
+                u_coulomb, f_coulomb = calc_coulomb( r_eval, *charges, "energy"), calc_coulomb( r_eval, *charges, "force")
+
+                # Get total energy and force
+                u_total, f_total     = u_coulomb, f_coulomb
+
+            # Save the evaluated distance, energy and force into the table dict
+            tabled_dict_list.append( { "list": sbk, 
+                                        "N": len(r_eval), 
+                                        "p": list( zip( range(1, evaluation_steps + 1), r_eval, u_total, f_total ) )
+                                        } )
 
     # Write the table using Jinja2 template
     with open(table_template) as file_: 
