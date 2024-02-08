@@ -111,8 +111,8 @@ def apply_charge_group_approach( mol_list: List[molecule], force_field: Dict[str
 def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict], 
                        table_path: str, table_template: str, evaluation_steps: int = 1000 ):
     """
-    This function writes an input table for the LAMMPS bond style "table". The charge group approach is used, to include the 1.4-Mie interaction of the special torsion pair provided,
-    as well as the evaluation of all coulombic interactions between local dipols. In the case two atoms of different local dipols are bonded, also evaluate the bonded potential.
+    This function writes an input table for the LAMMPS bond style "table". The charge group approach is used, to include the 1.4-Mie and Coulombic interactions between local dipols.
+    In the case two atoms of different local dipols are bonded, also evaluate the bonded potential.
 
     Args:
         mol_list (List[molecule]): Moleculegraph objects of the molecules under investigation.
