@@ -22,7 +22,7 @@ pip install -I .
 ```
 3. PLAYMOL
 ```
-git clone git clone https://github.com/atoms-ufrj/playmol
+git clone https://github.com/atoms-ufrj/playmol
 cd playmol
 make
 ```
