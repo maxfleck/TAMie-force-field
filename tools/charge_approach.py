@@ -97,9 +97,9 @@ def apply_charge_group_approach( mol_list: List[molecule], force_field: Dict[str
 
             print("\nThese are the unique special bonds that are added for intramolecular interaction:\n%s\n"%("\n".join( " ".join(sb) for sb in special_bond_names_unique )))
             
-            # Jinja2 template uses p[1] as first entry and p[0] as second --> thats why at first the key then the table name.
+            # First provide the table path and then the table key
             for ( bkey, bname ) in zip(special_bond_keys_unique, special_bond_names_unique):
-                force_field["bonds"][bkey] = { "list": list(bname), "p":  [ bkey, table_path ], "style": "table", "type": -1}
+                force_field["bonds"][bkey] = { "list": list(bname), "p":  [ table_path, bkey ], "style": "table", "type": -1}
 
             # Write the new bonded force field and return it
             bonded_force_field = [j for sub in [molecule.map_molecule( molecule.unique_bond_keys, force_field["bonds"] ) for molecule in mol_list] for j in sub]
@@ -146,7 +146,7 @@ def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict],
                 if mol.get_distance(*sbi) == 1:
 
                     # K is given in Kcal/mol/Angstrom^2, r0 in Angstrom
-                    r0, K    = force_field["bonds"][moleculegraph.make_graph( ff_keys )]["p"]
+                    K, r0    = force_field["bonds"][moleculegraph.make_graph( ff_keys )]["p"]
 
                     # Get Coulomb parameter (charges and cut off)
                     charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
@@ -175,7 +175,7 @@ def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict],
                     charges  = [ force_field["atoms"][atom_key]["charge"] for atom_key in ff_keys ]
                     epsilons = [ force_field["atoms"][atom_key]["epsilon"] for atom_key in ff_keys ]
                     sigmas   = [ force_field["atoms"][atom_key]["sigma"] for atom_key in ff_keys ]
-                    ns       = [ force_field["atoms"][atom_key]["m"] for atom_key in ff_keys ]
+                    ns       = [ force_field["atoms"][atom_key]["n"] for atom_key in ff_keys ]
 
                     # Use mixing Lorentz-Berthelot mixing rule for sigma and epsilon, as well as an arithmetic mean for the repulsive exponent
                     n        = np.mean( ns )
@@ -228,4 +228,4 @@ def write_tabled_bond( mol_list: List[molecule], force_field: Dict[str,Dict],
     with open(table_path, "w") as fh:
         fh.write(rendered) 
     
-    return
+    return table_path

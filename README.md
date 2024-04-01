@@ -29,167 +29,176 @@ make
 
 ## 🐍 Example program
 
-The following example will demonstrate how to setup MD simulations (this is also demonstrated in the example.ipynb). Essentially, the workflow can be summarized as follows:
-1. Get intial molecule coordinates (e.g.: using SMILES and PubChem) and provide a graph representation.
-2. Use PLAYMOL to construct a system of any mixture.
-3. Use the moleculegraph and pyLAMMPS software to generate LAMMPS data and input files via jinja2 templates.
+## Simulation setup
 
-## 1. Define general settings ##
+pyLAMMPS enanbles the structured and FAIR setup of simulation systems. Together with moleculegraph and PLAYMOL it enables the building of an initial configuration and to write the necessary LAMMPS data and input files
 
-1. Define path to force field toml (in a moleculegraph understandable format),
-2. Define name, SMILES, and graph strings of the molecules under investigation.
-3. Call the python LAMMPS input class
+1) Read in the YAML files to define the system and simulation/sampling settings. Also provide the simulated ensembles and further settings
 
 ```python
-# 1: Path tho force field toml
-force_field_path     = "force-fields/forcefield_lammps.toml"
+# Read in YAML files
+lammps_setup = LAMMPS_setup( system_setup = "input/setup.yaml", 
+                             simulation_default = "input/defaults.yaml",
+                             simulation_ensemble = "input/ensemble.yaml",
+                             simulation_sampling = "input/sampling.yaml",
+                             submission_command = "qsub"
+                            )
 
-# 2: Names, SMILES, and graphs of molecules (further examples on constructing molecule graphs available at https://github.com/maxfleck/moleculegraph)
+# Define simulation folder
+sim_folder = f'{lammps_setup.system_setup["folder"]}/{lammps_setup.system_setup["name"]}'
 
-system_name          = "pure_ethanediol"
+# Define the ensembles that should be simulated (definition what each ensemble means is provided in yaml file)
+ensembles = [ "em", "npt" ] 
 
-molecule_name1       = "ethanediol"
-molecule_graph1      = "[cH_alcohol][OH_alcohol][CH2_alcohol][CH2_alcohol][OH_alcohol][cH_alcohol]"
-molecule_smiles1     = "OCCO"
+# Define the simulation time per ensemble in nano seconds (for em the number of iterations is provided in the ensemble yaml)
+simulation_times = [ 0, 60.0 ]
 
-molecule_name_list   = [ molecule_name1 ]
-molecule_graph_list  = [ molecule_graph1 ]
-molecule_smiles_list = [ molecule_smiles1 ]
+# Define initial systems. This can be .data or .restart files. For each temperature & pressure state define one system
+initial_systems = [ "/home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/temp_298_pres_1/build/system.data" ]
 
-# Path to working folder
-working_folder       = f"example/{system_name}"
+# Define number of copies
+copies = 2
 
-# Templates
+# Define if the initial system (if not provided) should be build on a cluster or local machine
+on_cluster = True
 
-# Xyz templates
-template_xyz                 = "templates/template_write_xyz.xyz"
+# Define any further input kwargs for the input template
+input_kwargs = {}
 
-# PLAYMOL templates
-playmol_force_field_template = "templates/template_playmol_forcefield.playmol"
-playmol_input_template       = "templates/template_playmol_input.mol"
-
-# LAMMPS template
-LAMMPS_table_template        = "templates/template_lammps_bond_table.table"
-LAMMPS_data_template         = "templates/template_lammps_data.data"
-LAMMPS_input_template        = "templates/template_lammps_input.in"
-LAMMPS_ff_template           = "templates/template_lammps_ff.params"
-
-# Define output path for final xyz files
-xyz_destinations     = [ f"{working_folder}/initial_coordinates/%s.xyz"%name for name in molecule_name_list ]
-
-# Get the single molecule coordinates for each component
-get_molecule_coordinates( molecule_name_list = molecule_name_list, molecule_graph_list = molecule_graph_list, molecule_smiles_list = molecule_smiles_list,
-                          xyz_destinations = xyz_destinations, template_xyz = template_xyz, verbose = False )
-
-
-# 3: Call the LAMMPS input class
-LAMMPS_class        = LAMMPS_input( mol_str = molecule_graph_list, ff_path = force_field_path )
+# Define the starting number for the first ensemble ( 0{off_set}_ensemble )
+off_set = 0
 ```
 
-## 2. Write system size independent files ##
+2) Utilize moleculegraph and the LAMMPS_molecules class provided by pyLAMMPS to map the force field parameters with the molecules. <br>
+   Apply the charge group approach and write LAMMPS force field input
 
-1. The PLAYMOL force field file, which is used to build the initial configurations
-2. Utilize the charge group approach
-3. Write tabled bond interactions for the system: Define per component the two atoms in the torsion that was reparametrized (e.g.: 1,2-ethanediol: ["OH_alcohol","OH_alcohol"] )
 
 ```python
-# 1: PLAYMOL force field file
+# Call the LAMMPS molecule class
+lammps_molecules = LAMMPS_molecules( mol_str = [ mol["graph"] for mol in lammps_setup.system_setup["molecules"] ],
+                                     force_field_path = lammps_setup.system_setup["paths"]["force_field_path"] 
+                                    ) 
 
-playmol_force_field_destination = f"{working_folder}/playmol_ff.playmol"
+# Use the charge group approach (and overwrite the bonded information of the moleculegraph objects)
+lammps_molecules.bonds = apply_charge_group_approach( mol_list = lammps_molecules.mol_list, 
+                                                      force_field = lammps_molecules.ff, 
+                                                      table_path = f"{sim_folder}/bonded_interactions.table" 
+                                                    )
 
-LAMMPS_class.prepare_playmol_input( playmol_template = playmol_force_field_template, playmol_ff_path = playmol_force_field_destination )
+# Prepare the LAMMPS force field (this gathers all the necessary input from the force field toml file)
+lammps_molecules.prepare_lammps_force_field()
 
-# 2: Use the charge group approach (and overwrite the bonded information of the moleculegraph object)
+# Get shake dictionary
+shake_dict = lammps_molecules.get_shake_indices( lammps_setup.simulation_default["shake_dict"] )
 
-table_path  = "../bonded_interactions.table"
-LAMMPS_class.bonds = apply_charge_group_approach( mol_list = LAMMPS_class.mol_list, force_field = LAMMPS_class.ff, table_path = table_path )
+# Write LAMMPS force field file
+# Define the number of spline interpolations LAMMPS stores of the tabled potential (https://docs.lammps.org/bond_table.html)
+lammps_ff_file = write_lammps_ff( ff_template = lammps_setup.system_setup["paths"]["template"]["lammps_ff_file"], 
+                                lammps_ff_path = f"{sim_folder}/force_field.params", 
+                                potential_kwargs = { **lammps_setup.simulation_default["non_bonded"]["vdw_style"], 
+                                                     **lammps_setup.simulation_default["non_bonded"]["coulomb_style"] },
+                                atom_numbers_ges = lammps_molecules.atom_numbers_ges, 
+                                nonbonded = lammps_molecules.nonbonded, 
+                                bond_numbers_ges = lammps_molecules.bond_numbers_ges, 
+                                bonds = lammps_molecules.bonds,
+                                angle_numbers_ges = lammps_molecules.angle_numbers_ges, 
+                                angles = lammps_molecules.angles,
+                                torsion_numbers_ges = lammps_molecules.torsion_numbers_ges, 
+                                torsions = lammps_molecules.torsions,
+                                only_self_interactions = lammps_setup.simulation_default["non_bonded"]["lammps_mixing"], 
+                                mixing_rule = lammps_setup.simulation_default["non_bonded"]["mixing"],
+                                ff_kwargs = lammps_setup.simulation_default["non_bonded"],
+                                n_eval = 1000 
+                                )
 
-# Prepare LAMMPS force field with the given molecules --> these are altered through the charge group approach
-LAMMPS_class.prepare_lammps_force_field()
-
-# 3: Tabled bond interactions
-
-LAMMPS_table_destination = f"{working_folder}/bonded_interactions.table"
-
-write_tabled_bond( mol_list = LAMMPS_class.mol_list, force_field = LAMMPS_class.ff, 
-                   table_path = LAMMPS_table_destination, table_template = LAMMPS_table_template )
+# Write tabled bond interactions (at the same destination as the LAMMPS ff file)
+lammps_table_file = write_tabled_bond( mol_list = lammps_molecules.mol_list, 
+                                       force_field = lammps_molecules.ff, 
+                                       table_path = f"{sim_folder}/bonded_interactions.table", 
+                                       table_template = lammps_setup.system_setup["paths"]["template"]["lammps_table_file"],
+                                       evaluation_steps = 1000
+                                      )
 ```
 
-## 3. Write system size dependent files ##
-
-1. Define general (thermodynamic) settings for each system.
-2. Write PLAYMOL input file and execute it to build the system (if wanted).
-3. Write LAMMPS data file using the from PLAYMOL generated xyz file
-4. Write LAMMPS input file for each system
+3) Write input (and data) file for every temperature & pressure state
 
 ```python
-# 1: Define general settings for each system
-# Temperatures [K], pressures [bar] (if wanted, otherwise use 0.0) and initial denisties [kg/m^3] for each system. Also define the number of molecules per component.
+lammps_setup.job_files = []
 
-temperatures     = [ 273.15, 298.15]
-pressures        = [ 1.0, 1.0 ]
-densities        = [ 1125, 1110 ]
-
-# Define the total number of molecules in the simulation and the compositions per statepoint
-molecule_number  = 500
-compositions     = [ [ 1.0 ] , [ 1.0 ] ]
-
-# Simulation path
-simulation_path  = f"{working_folder}/sim_%d"
-
-# Define if PLAYMOL should be executed and further settings
-build_playmol             = False
-
-# Define additional functions that can be parsed to the LAMMPS input class. They can operate with class atributes, if the input arguments have the same name as the class argument.
-# Furthermore define possible external function inputs that are also passed to the functions (per function define a new dictionary with inputs).
-# In this example the write_pair_ff is a function that writes the van der Waals pair interactions. external arguments can be, that the force field is writen to an external file instead within the 
-# input file.
-external_functions = [ write_pair_ff ]
-lammps_ff_path     = f"{working_folder}/lammps_ff.params"
-
-for i, (temp, press, dens, composition) in enumerate( zip( temperatures, pressures, densities, compositions ) ):
-
-    # Create the simulation folder (if not already done)
-    os.makedirs( simulation_path%i, exist_ok = True )
-
-    # Prepare LAMMPS with molecules numbers and density of the system
-    # Get the molecule numbers according to the mixture composition (utilize closing condition for first component) 
-    remaining_numbers = ( np.array(composition[1:]) * molecule_number ).astype("int")
-    molecule_numbers  = [ molecule_number - sum(remaining_numbers), *(remaining_numbers if sum(remaining_numbers) > 0 else []) ]
-
-    LAMMPS_class.prepare_lammps_data (nmol_list = molecule_numbers, density = dens )
-
-
-    # 2: Write PLAYMOL input and execute (if wanted.)
-    playmol_input_destination = simulation_path%i + f"/build/{system_name}_{i}.mol"
+for i, (temperature, pressure, density) in enumerate( zip( lammps_setup.system_setup["temperature"], 
+                                                           lammps_setup.system_setup["pressure"], 
+                                                           lammps_setup.system_setup["density"] ) ):
     
-    if build_playmol:
-        playmol_relative_ff_path  = os.path.relpath(playmol_force_field_destination, os.path.dirname(playmol_input_destination))
-        playmol_relative_xyz_path = [ os.path.relpath(xyz, os.path.dirname(playmol_input_destination)) for xyz in xyz_destinations ]
-
-        LAMMPS_class.write_playmol_input( playmol_template = playmol_input_template, playmol_path = playmol_input_destination, 
-                                          playmol_ff_path = playmol_relative_ff_path, xyz_paths = playmol_relative_xyz_path )
-
-
-    # 3: Write LAMMPS data file from generated xyz file
-    system_xyz              = playmol_input_destination.replace( ".mol", ".xyz" )
-    LAMMPS_data_destination = simulation_path%i + "/build/lammps.data"
-
-    LAMMPS_class.write_lammps_data( xyz_path = system_xyz, data_template = LAMMPS_data_template, data_path = LAMMPS_data_destination )
-
-
-    # 4: Write LAMMPS input file
-    LAMMPS_input_destination  = simulation_path%i + "/simulation/lammps.input"
-    relative_LAMMPS_data_path = os.path.relpath(LAMMPS_data_destination, os.path.dirname(LAMMPS_input_destination))
-   
-    LAMMPS_class.prepare_lammps_input( )
+    job_files = []
     
-    external_function_input = [ { "ff_template": LAMMPS_ff_template, "lammps_ff_path": lammps_ff_path, 
-                                  "relative_lammps_ff_path": os.path.relpath(lammps_ff_path, os.path.dirname(LAMMPS_input_destination)) } ]
+    # Define folder for specific temp and pressure state
+    state_folder = f"{sim_folder}/temp_{temperature:.0f}_pres_{pressure:.0f}"
 
-    LAMMPS_class.write_lammps_input( input_path = LAMMPS_input_destination, template_path = LAMMPS_input_template, data_file = relative_LAMMPS_data_path,
-                                     temperature = temp, pressure = press, equilibration_time = 2e6, production_time = 1e6,
-                                     external_functions = external_functions, external_function_input = external_function_input )
+    # Build system with PLAYMOL and write LAMMPS data if no initial system is provided
+    if not initial_systems:
+        
+        lammps_data_file = generate_initial_configuration( lammps_molecules = lammps_molecules,
+                                                            destination_folder = state_folder,
+                                                            molecules_dict_list = lammps_setup.system_setup["molecules"],
+                                                            density = density,
+                                                            template_xyz = lammps_setup.system_setup["paths"]["template"]["xyz_file"],
+                                                            playmol_ff_template = lammps_setup.system_setup["paths"]["template"]["playmol_ff_file"],
+                                                            playmol_input_template = lammps_setup.system_setup["paths"]["template"]["playmol_input_file"],
+                                                            playmol_bash_file = lammps_setup.system_setup["paths"]["template"]["playmol_bash_file"],
+                                                            lammps_data_template = lammps_setup.system_setup["paths"]["template"]["lammps_data_file"],
+                                                            submission_command = lammps_setup.submission_command, 
+                                                            on_cluster = on_cluster
+                                                        )
+    
+        flag_restart = False
+    else:
+        lammps_data_file = initial_systems[i]
+        print(f"\nIntial system provided for at: {lammps_data_file}\n")
+        flag_restart = ".restart" in lammps_data_file
+        if flag_restart: 
+            print("Restart file is provided. Continue simulation from there!\n")
+
+    # Define folder for each copy
+    for copy in range( copies + 1 ):
+        copy_folder = f"{state_folder}/copy_{copy}"
+
+        # Produce input files (for each ensemble an own folder 0x_ensemble)
+        input_files = generate_input_files( destination_folder = copy_folder, 
+                                            input_template = lammps_setup.system_setup["paths"]["template"]["lammps_input_file"],
+                                            ensembles = ensembles, 
+                                            temperature = temperature, 
+                                            pressure = pressure,
+                                            data_file = lammps_data_file, 
+                                            ff_file = lammps_ff_file,
+                                            simulation_times = simulation_times,
+                                            dt = lammps_setup.simulation_default["system"]["dt"], 
+                                            kwargs = { **lammps_setup.simulation_default,
+                                                        **lammps_setup.simulation_sampling, 
+                                                        **input_kwargs,
+                                                        "style": style_dict,
+                                                        "shake_dict": shake_dict, 
+                                                        "restart_flag": flag_restart }, 
+                                            ensemble_definition = lammps_setup.simulation_ensemble,
+                                            off_set = off_set
+                                            )
+        
+        # Create job file
+        job_files.append( generate_job_file( destination_folder = copy_folder, 
+                                             job_template = lammps_setup.system_setup["paths"]["template"]["job_file"], 
+                                             input_files = input_files, 
+                                             ensembles = ensembles,
+                                             job_name = f'{lammps_setup.system_setup["name"]}_{temperature:.0f}_{pressure:.0f}',
+                                             job_out = f"job_{temperature:.0f}_{pressure:.0f}.sh", 
+                                             off_set = off_set 
+                                            ) 
+                        )
+        
+    lammps_setup.job_files.append( job_files )
+
+```
+4) Submit the simulations
+```
+lammps_setup.submit_simulation()
 ```
 
 ## 🚑 Help

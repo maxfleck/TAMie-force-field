@@ -1,0 +1,432 @@
+{
+ "atoms": {
+  "OH_alcohol": {
+   "name": "OH_alcohol",
+   "mass": 17.007,
+   "epsilon": 0.1674,
+   "sigma": 3.035,
+   "m": 6,
+   "cut": 14.0,
+   "charge": -0.65,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  },
+  "CH2_alkane": {
+   "name": "CH2_alkane",
+   "mass": 14.027,
+   "epsilon": 0.1051,
+   "sigma": 4.04,
+   "m": 6,
+   "cut": 14.0,
+   "charge": 0.0,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "",
+   "n": 14.0
+  },
+  "CH2_alcohol": {
+   "name": "CH2_alcohol",
+   "mass": 14.027,
+   "epsilon": 0.1674,
+   "sigma": 3.842,
+   "m": 6,
+   "cut": 14.0,
+   "charge": 0.246,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 14.0
+  },
+  "CH2_EOH": {
+   "name": "CH2_EOH",
+   "mass": 14.027,
+   "epsilon": 0.1516,
+   "sigma": 3.908,
+   "m": 6,
+   "cut": 14.0,
+   "charge": 0.252,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 14.0
+  },
+  "OH_EOH": {
+   "name": "OH_EOH",
+   "mass": 17.007,
+   "epsilon": 0.1516,
+   "sigma": 3.087,
+   "m": 6,
+   "cut": 14.0,
+   "charge": -0.667,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  },
+  "cH_alcohol": {
+   "name": "H",
+   "mass": 1.0,
+   "epsilon": 0.0,
+   "sigma": 1.0,
+   "m": 6,
+   "cut": 0.0,
+   "charge": 0.404,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  },
+  "cH_EOH": {
+   "name": "H",
+   "mass": 1.0,
+   "epsilon": 0.0,
+   "sigma": 1.0,
+   "m": 6,
+   "cut": 0.0,
+   "charge": 0.415,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  }
+ },
+ "bonds": {
+  "[CH2_alkane][CH2_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.54
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][CH2_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "CH2_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.514
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_EOH][CH2_EOH]": {
+   "list": [
+    "CH2_EOH",
+    "CH2_EOH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.514
+   ],
+   "style": "harmonic"
+  },
+  "[OH_EOH][cH_EOH]": {
+   "list": [
+    "OH_EOH",
+    "cH_EOH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    0.97
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_EOH][OH_EOH]": {
+   "list": [
+    "CH2_EOH",
+    "OH_EOH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.42
+   ],
+   "style": "harmonic"
+  },
+  "[OH_alcohol][cH_alcohol]": {
+   "list": [
+    "OH_alcohol",
+    "cH_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    0.97
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][OH_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "OH_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.42
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][CH2_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.514
+   ],
+   "style": "harmonic"
+  }
+ },
+ "angles": {
+  "[CHxx_alkane][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CHxx_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][OH_alcohol][cH_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "OH_alcohol",
+    "cH_alcohol"
+   ],
+   "type": 2,
+   "p": [
+    45.666,
+    107.4
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_alcohol][OH_alcohol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alcohol",
+    "OH_alcohol"
+   ],
+   "type": 2,
+   "p": [
+    61.8517,
+    113.5
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][CH2_alcohol][OH_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "CH2_alcohol",
+    "OH_alcohol"
+   ],
+   "type": 2,
+   "p": [
+    61.8517,
+    113.5
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_alcohol"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alcohol][CH2_alkane][CH2_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "CH2_alkane",
+    "CH2_alcohol"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_EOH][OH_EOH][cH_EOH]": {
+   "list": [
+    "CH2_EOH",
+    "OH_EOH",
+    "cH_EOH"
+   ],
+   "type": 2,
+   "p": [
+    45.666,
+    107.4
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_EOH][CH2_EOH][OH_EOH]": {
+   "list": [
+    "CH2_EOH",
+    "CH2_EOH",
+    "OH_EOH"
+   ],
+   "type": 2,
+   "p": [
+    61.8517,
+    113.5
+   ],
+   "style": "harmonic"
+  }
+ },
+ "torsions": {
+  "[CHxx_alkane][CH2_alkane][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CHxx_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_alcohol][OH_alcohol][cH_alcohol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alcohol",
+    "OH_alcohol",
+    "cH_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    0.3259,
+    0.1466,
+    1.2076,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alcohol][CH2_alcohol][OH_alcohol][cH_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "CH2_alcohol",
+    "OH_alcohol",
+    "cH_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    0.3259,
+    0.1466,
+    1.2076,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CHxx_alkane][CH2_alkane][CH2_alcohol][OH_alcohol]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_alcohol",
+    "OH_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    0.8205,
+    -0.8845,
+    4.3126,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alcohol][CH2_alkane][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alcohol][CH2_alkane][CH2_alkane][CH2_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alcohol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alcohol][CH2_alkane][CH2_alcohol][OH_alcohol]": {
+   "list": [
+    "CH2_alcohol",
+    "CH2_alkane",
+    "CH2_alcohol",
+    "OH_alcohol"
+   ],
+   "type": 6,
+   "p": [
+    8,
+    3.9744,
+    -8.5613,
+    0.9334,
+    10.41,
+    -9.5521,
+    -5.8032,
+    8.0155,
+    5.1695
+   ],
+   "style": "nharmonic"
+  },
+  "[OH_alcohol][CH2_alcohol][CH2_alcohol][OH_alcohol]": {
+   "list": [
+    "OH_alcohol",
+    "CH2_alcohol",
+    "CH2_alcohol",
+    "OH_alcohol"
+   ],
+   "type": 6,
+   "p": [
+    8,
+    2.6589,
+    -7.8957,
+    1.0508,
+    9.275,
+    -3.4912,
+    0.9373,
+    2.9143,
+    -1.4117
+   ],
+   "style": "nharmonic"
+  }
+ }
+}

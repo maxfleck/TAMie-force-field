@@ -1,0 +1,50 @@
+## LAMMPS force field file. Automaticly created by pyLAMMPS
+
+# Pair style
+
+pair_style  hybrid/overlay mie/cut 12 coul/long 12
+pair_modify  mix arithmetic  tail yes
+kspace_style  pppm/cg 0.0001
+
+# Van der Waals interactions
+
+pair_coeff  1 1 mie/cut 0.0 1.0 12.0 6.0 # H  H
+pair_coeff  1 2 mie/cut 0.0 2.0175 12.0 6.0 # H  OH_alcohol
+pair_coeff  1 3 mie/cut 0.0 2.421 13.0 6.0 # H  CH2_alcohol
+pair_coeff  2 2 mie/cut 0.1674 3.035 12.0 6.0 # OH_alcohol  OH_alcohol
+pair_coeff  2 3 mie/cut 0.1674 3.4385 13.0 6.0 # OH_alcohol  CH2_alcohol
+pair_coeff  3 3 mie/cut 0.1674 3.842 14.0 6.0 # CH2_alcohol  CH2_alcohol
+
+# Coulomb interactions
+
+pair_coeff  * * coul/long
+
+# Bonded interactions
+
+bond_style  hybrid harmonic table spline 1000
+
+
+bond_coeff  1 harmonic 200.0 0.97 # OH_alcohol cH_alcohol
+bond_coeff  2 harmonic 200.0 1.42 # CH2_alcohol OH_alcohol
+bond_coeff  3 table /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/bonded_interactions.table [special][CH2_alcohol][cH_alcohol] # cH_alcohol CH2_alcohol
+bond_coeff  4 table /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/bonded_interactions.table [special][OH_alcohol][cH_alcohol] # cH_alcohol OH_alcohol
+bond_coeff  5 table /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/bonded_interactions.table [special][cH_alcohol][cH_alcohol] # cH_alcohol cH_alcohol
+bond_coeff  6 table /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/bonded_interactions.table [special][CH2_alcohol][OH_alcohol] # OH_alcohol CH2_alcohol
+bond_coeff  7 table /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/bonded_interactions.table [special][OH_alcohol][OH_alcohol] # OH_alcohol OH_alcohol
+bond_coeff  8 table /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/example/1.2-ethanediol/bonded_interactions.table [special][CH2_alcohol][CH2_alcohol] # CH2_alcohol CH2_alcohol
+
+# Angle interactions
+
+angle_style  harmonic
+
+
+angle_coeff  1 45.666 107.4 # CH2_alcohol OH_alcohol cH_alcohol
+angle_coeff  2 61.8517 113.5 # CH2_alcohol CH2_alcohol OH_alcohol
+
+# Dihedral interactions
+
+dihedral_style  hybrid nharmonic opls
+
+
+dihedral_coeff  1 opls 0.3259 0.1466 1.2076 0.0 # CH2_alcohol CH2_alcohol OH_alcohol cH_alcohol
+dihedral_coeff  2 nharmonic 8 2.6589 -7.8957 1.0508 9.275 -3.4912 0.9373 2.9143 -1.4117 # OH_alcohol CH2_alcohol CH2_alcohol OH_alcohol

@@ -1,0 +1,54 @@
+# General definitions of the system
+
+# Simulation folder (simulations will be saved in this folder + the system name)
+folder: /home/st/st_st/st_ac137577/workspace/TAMie/MD
+
+# System name
+name: 1.2-ethanediol
+
+# Define the components
+molecules:
+  - name: ethanediol
+    graph: "[cH_alcohol][OH_alcohol][CH2_alcohol][CH2_alcohol][OH_alcohol][cH_alcohol]"
+    smiles: "OCCO"
+    number: 500
+
+# Define paths 
+paths:
+
+  # Force field toml
+  force_field_path: /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/force-fields/ff_UA_TAMie_alcohols.json
+
+  # Template files
+  template:
+    xyz_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/general/template_write.xyz
+    playmol_ff_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/playmol/template_playmol.playmol
+    playmol_input_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/playmol/template_playmol.mol
+    playmol_bash_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/playmol/build_system_pbs.sh
+    lammps_data_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/lammps/template_lammps.data
+    lammps_input_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/lammps/template_lammps.in
+    lammps_ff_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/lammps/template_lammps.params
+    lammps_table_file: /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/templates/template_lammps.table
+    job_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/bash/template_job_pbs.sh
+
+# Define the temperature (K), pressure (bar) and density (estimate, kg/m3) for each system that should be studied
+temperature:
+  - 298.15
+  - 415.17
+  - 415.17
+  - 562.76
+  - 710.45
+
+pressure:
+  - 1.0
+  - 0.12
+  - 10.0
+  - 10.31
+  - 92.73
+
+density:
+  - 1110
+  - 1000
+  - 1000
+  - 900
+  - 400
