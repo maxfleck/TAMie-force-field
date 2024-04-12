@@ -2,7 +2,7 @@
  "atoms": {
   "OH_alcohol": {
    "name": "OH_alcohol",
-   "mass": 17.007,
+   "mass": 15.999,
    "epsilon": 0.1674,
    "sigma": 3.035,
    "m": 6,
@@ -50,7 +50,7 @@
   },
   "OH_EOH": {
    "name": "OH_EOH",
-   "mass": 17.007,
+   "mass": 15.999,
    "epsilon": 0.1516,
    "sigma": 3.087,
    "m": 6,

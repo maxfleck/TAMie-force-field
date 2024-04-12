@@ -1,0 +1,23 @@
+model    site         site         site         site         potential-parameters       scale-14-VdW_q_interactions
+ 1       CHxx_alkane  CH2_alkane   CH2_alkane   CHxx_alkane     0.0    355.03   -68.19   791.32    0.0
+ 1       CH2_alkane   CH2_thiol    SH_thiol     cH_thiol        52.88  -52.05   18.46    306.36    0.0
+ 1       CHxx_alkane  CH2_alkane   CH2_thiol    SH_thiol        0.0    355.03   -68.19   791.32    0.0
+ 1       CHxx_alkane  CH2_alkane   CH2_alkane   CH2_thiol       0.0    355.03   -68.19   791.32    0.0
+ 1       CH3_alkane   CH2_ESH      SH_ESH       cH_ESH          52.88  -52.05   18.46    306.36    0.0
+ 
+Note: 'xx' is a generic string for xx = ( 1, 2, 3 )
+!           u_torsion = C(0) + SUM( C(k) * cos(k*phi) ) for k=1..5
+!
+! model = 3 for the OPLS model
+!           u_torsion = SUM( C(k) * cos(phi)**k ) for k=0..5
+!
+! model = 2 for the de Pablo model
+!           u_torsion = C(O) + 0.5*C(1)*(1+cosphi) + 0.5*C(2)*(1-cos2phi) + 0.5*C(3)*(1+cos3phi)
+!
+! model = 1 for the TraPPE model
+!           u_torsion = C(O) + C(1)*(1+cos(phi)) + C(2)*(1-cos(2*phi)) + C(3)*(1+cos(3*phi))
+!                     = C(O) + C(1)*(1+cos(phi)) + 2*C(2)*(1-cos(phi)**2)
+!                                                + C(3)*(1 +4*cos(phi)**3 -3*cos(phi))
+!
+! ( note, that cos(2*phi) = 2*cos(phi)**2 - 1  and  cos(3*phi) = 4*cos(phi)**3 - 3*cos(phi) )
+!  

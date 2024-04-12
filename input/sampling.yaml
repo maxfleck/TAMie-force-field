@@ -34,22 +34,22 @@ sampling:
       file ${project}.density"
 
     
-  dihedral_occo:
-    variables: []
+  # dihedral_occo:
+  #   variables: []
       
-    verbatim:
-      - "group occo type 2 3"
-      - "compute dihedral_occo occo dihedral/local phi"
+  #   verbatim:
+  #     - "group occo type 2 3"
+  #     - "compute dihedral_occo occo dihedral/local phi"
 
-    command:
-      "fix dihedral_occo all ave/histo ${sample_frequency} ${sample_number} ${to_file_every} &\n
-      -180 180 501 c_dihedral_occo mode vector ave running overwrite &\n
-      file ${project}.dihedral_occo"
+  #   command:
+  #     "fix dihedral_occo all ave/histo ${sample_frequency} ${sample_number} ${to_file_every} &\n
+  #     -180 180 501 c_dihedral_occo mode vector ave running overwrite &\n
+  #     file ${project}.dihedral_occo"
 
-  positions:
-    variables: []
+  # positions:
+  #   variables: []
 
-    verbatim: []
+  #   verbatim: []
 
-    command:
-      "dump trj all atom 10000 ${project}.lammpstrj"
+  #   command:
+  #     "dump trj all atom 10000 ${project}.lammpstrj"

@@ -1,0 +1,694 @@
+{
+ "atoms": {
+  "CH3_alkane": {
+   "name": "CH3_alkane",
+   "mass": 15.035,
+   "epsilon": 0.2709,
+   "sigma": 3.6034,
+   "m": 6,
+   "cut": 14.0,
+   "charge": 0.0,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "",
+   "n": 14.0
+  },
+  "CH2_alkane": {
+   "name": "CH2_alkane",
+   "mass": 14.027,
+   "epsilon": 0.1051,
+   "sigma": 4.04,
+   "m": 6,
+   "cut": 14.0,
+   "charge": 0.0,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "",
+   "n": 14.0
+  },
+  "SH_thiol": {
+   "name": "SH_thiol",
+   "mass": 32.065,
+   "epsilon": 0.4396,
+   "sigma": 3.5917,
+   "m": 6,
+   "cut": 14.0,
+   "charge": -0.35,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  },
+  "CH2_thiol": {
+   "name": "CH2_thiol",
+   "mass": 14.027,
+   "epsilon": 0.1286,
+   "sigma": 3.9194,
+   "m": 6,
+   "cut": 14.0,
+   "charge": 0.159,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 14.0
+  },
+  "cH_thiol": {
+   "name": "H",
+   "mass": 1.0,
+   "epsilon": 0.0,
+   "sigma": 1.0,
+   "m": 6,
+   "cut": 0.0,
+   "charge": 0.191,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  },
+  "cH_ESH": {
+   "name": "H",
+   "mass": 1.0,
+   "epsilon": 0.0,
+   "sigma": 1.0,
+   "m": 6,
+   "cut": 0.0,
+   "charge": -0.35,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  },
+  "cH_MSH": {
+   "name": "H",
+   "mass": 1.0,
+   "epsilon": 0.0,
+   "sigma": 1.0,
+   "m": 6,
+   "cut": 0.0,
+   "charge": 0.159,
+   "vdw_style": "mie/cut",
+   "coulomb_style": "coul/long",
+   "n": 12.0
+  }
+ },
+ "bonds": {
+  "[CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_alkane"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.74
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.54
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_ESH][CH3_alkane]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_ESH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.74
+   ],
+   "style": "harmonic"
+  },
+  "[SH_ESH][cH_ESH]": {
+   "list": [
+    "SH_ESH",
+    "cH_ESH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.34
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_ESH][SH_ESH]": {
+   "list": [
+    "CH2_ESH",
+    "SH_ESH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.82
+   ],
+   "style": "harmonic"
+  },
+  "[SH_MSH][cH_MSH]": {
+   "list": [
+    "SH_MSH",
+    "cH_MSH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.34
+   ],
+   "style": "harmonic"
+  },
+  "[CH3_MSH][SH_MSH]": {
+   "list": [
+    "CH3_MSH",
+    "SH_MSH"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.82
+   ],
+   "style": "harmonic"
+  },
+  "[SH_thiol][cH_thiol]": {
+   "list": [
+    "SH_thiol",
+    "cH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.34
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_thiol][SH_thiol]": {
+   "list": [
+    "CH2_thiol",
+    "SH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.82
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_thiol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_thiol"
+   ],
+   "type": 1,
+   "p": [
+    200.0,
+    1.54
+   ],
+   "style": "harmonic"
+  }
+ },
+ "angles": {
+  "[CHxx_alkane][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CHxx_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_thiol][SH_thiol][cH_thiol]": {
+   "list": [
+    "CH2_thiol",
+    "SH_thiol",
+    "cH_thiol"
+   ],
+   "type": 2,
+   "p": [
+    33.6136,
+    96.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_thiol][SH_thiol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_thiol",
+    "SH_thiol"
+   ],
+   "type": 2,
+   "p": [
+    61.8517,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_thiol][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_thiol"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_ESH][SH_ESH][cH_ESH]": {
+   "list": [
+    "CH2_ESH",
+    "SH_ESH",
+    "cH_ESH"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    96.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH3_alkane][CH2_ESH][SH_ESH]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_ESH",
+    "SH_ESH"
+   ],
+   "type": 2,
+   "p": [
+    61.8517,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH3_MSH][SH_MSH][cH_MSH]": {
+   "list": [
+    "CH3_MSH",
+    "SH_MSH",
+    "cH_MSH"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    96.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH3_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH3_alkane][CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_alkane",
+    "CH3_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH3_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_thiol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_thiol"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_thiol][CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH2_thiol",
+    "CH2_alkane",
+    "CH3_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  },
+  "[CH2_thiol][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH2_thiol",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 2,
+   "p": [
+    62.1001,
+    114.0
+   ],
+   "style": "harmonic"
+  }
+ },
+ "torsions": {
+  "[CHxx_alkane][CH2_alkane][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CHxx_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_thiol][SH_thiol][cH_thiol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_thiol",
+    "SH_thiol",
+    "cH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    -0.2069,
+    0.0734,
+    1.2176,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CHxx_alkane][CH2_alkane][CH2_thiol][SH_thiol]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_thiol",
+    "SH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_thiol][CH2_alkane][CH2_alkane][CHxx_alkane]": {
+   "list": [
+    "CHxx_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_thiol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH3_alkane][CH2_ESH][SH_ESH][cH_ESH]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_ESH",
+    "SH_ESH",
+    "cH_ESH"
+   ],
+   "type": 1,
+   "p": [
+    -0.2069,
+    0.0734,
+    1.2176,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_alkane][CH2_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH3_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH3_alkane][CH2_alkane][CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH3_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH3_alkane][CH2_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH_alkane][CH2_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_thiol][SH_thiol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_thiol",
+    "SH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH3_alkane][CH2_alkane][CH2_thiol][SH_thiol]": {
+   "list": [
+    "CH3_alkane",
+    "CH2_alkane",
+    "CH2_thiol",
+    "SH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH_alkane][CH2_alkane][CH2_thiol][SH_thiol]": {
+   "list": [
+    "CH_alkane",
+    "CH2_alkane",
+    "CH2_thiol",
+    "SH_thiol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_alkane][CH2_alkane][CH2_alkane][CH2_thiol]": {
+   "list": [
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH2_thiol"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_thiol][CH2_alkane][CH2_alkane][CH3_alkane]": {
+   "list": [
+    "CH2_thiol",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH3_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  },
+  "[CH2_thiol][CH2_alkane][CH2_alkane][CH_alkane]": {
+   "list": [
+    "CH2_thiol",
+    "CH2_alkane",
+    "CH2_alkane",
+    "CH_alkane"
+   ],
+   "type": 1,
+   "p": [
+    1.411,
+    -0.271,
+    3.145,
+    0.0
+   ],
+   "style": "opls"
+  }
+ }
+}

@@ -1,0 +1,14 @@
+model      site          site          site          angle      potential-parameter
+ 2         CHxx_alkane   CH2_alkane    CHxx_alkane   114.0      62500.0
+ 2         CH2_thiol     SH_thiol      cH_thiol      96.0       33830.0
+ 2         CH2_alkane    CH2_thiol     SH_thiol      114.0      62250.0
+ 2         CHxx_alkane   CH2_alkane    CH2_thiol     114.0      62500.0
+ 2         CH2_ESH       SH_ESH        cH_ESH        96.0       62500.0
+ 2         CH3_alkane    CH2_ESH       SH_ESH        114.0      62250.0
+ 2         CH3_MSH       SH_MSH        cH_MSH        96.0       62500.0 
+ Note: 'xx' is a generic string for xx = ( 1, 2, 3 )
+
+ models:
+ =======
+ angle-bending  model  1:  fixed angle
+                model  2:  harmonic angle-bending potential

@@ -1,0 +1,54 @@
+# General definitions of the system
+
+# Simulation folder (simulations will be saved in this folder + the system name)
+folder: /home/st/st_st/st_ac137577/workspace/TAMie/MD
+
+# System name
+name: 1-octanethiol
+
+# Define the components
+molecules:
+  - name: octanethiol
+    graph: "[CH3_alkane][CH2_alkane][CH2_alkane][CH2_alkane][CH2_alkane][CH2_alkane][CH2_alkane][CH2_thiol][SH_thiol][cH_thiol]"
+    smiles: "CCCCCCCCS"
+    number: 500
+
+# Define paths 
+paths:
+
+  # Force field toml
+  force_field_path: /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/force-fields/ff_UA_TAMie_thiols.json
+
+  # Template files
+  template:
+    xyz_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/general/template_write.xyz
+    playmol_ff_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/playmol/template_playmol.playmol
+    playmol_input_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/playmol/template_playmol.mol
+    playmol_bash_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/playmol/build_system_pbs.sh
+    lammps_data_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/lammps/template_lammps.data
+    lammps_input_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/lammps/template_lammps.in
+    lammps_ff_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/lammps/template_lammps.params
+    lammps_table_file: /home/st/st_st/st_ac137577/workspace/software/TAMie-force-field/templates/template_lammps.table
+    job_file: /home/st/st_st/st_ac137577/workspace/software/pyLAMMPS/templates/bash/template_job_pbs.sh
+
+# Define the temperature (K), pressure (bar) and density (estimate, kg/m3) for each system that should be studied
+temperature:
+  - 303.15
+  - 313.15
+  - 323.15
+  - 333.15
+  - 359.00
+
+pressure:
+  - 1.01325
+  - 1.01325
+  - 1.01325
+  - 1.01325
+  - 1.01325
+
+density:
+  - 834
+  - 827
+  - 819
+  - 811
+  - 793

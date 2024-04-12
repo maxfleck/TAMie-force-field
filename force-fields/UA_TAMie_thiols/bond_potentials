@@ -1,0 +1,15 @@
+model      site         site           bond-length    spring-constant
+ 1         CH3_alkane   CH2_alkane     1.74           0.0
+ 1         CH2_alkane   CH2_alkane     1.54           0.0
+ 1         CH3_alkane   CH2_ESH        1.74           0.0
+ 1         SH_ESH       cH_ESH         1.34           0.0
+ 1         CH2_ESH      SH_ESH         1.82           0.0
+ 1         SH_MSH       cH_MSH         1.34           0.0
+ 1         CH3_MSH      SH_MSH         1.82           0.0
+ 1         SH_thiol     cH_thiol       1.34           0.0
+ 1         CH2_thiol    SH_thiol       1.82           0.0
+ 1         CH2_alkane   CH2_thiol      1.54           0.0
+! models:
+! ====================
+! bond-length    model  1:  fixed bond-length
+!                model  2:  harmonic bond-length potential
